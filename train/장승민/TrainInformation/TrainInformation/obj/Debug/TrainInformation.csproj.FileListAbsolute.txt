@@ -18,3 +18,13 @@ D:\Juan\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainIn
 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe.config
 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe
 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.pdb
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csprojAssemblyReference.cache
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.Form1.resources
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.Properties.Resources.resources
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csproj.GenerateResource.cache
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csproj.CoreCompileInputs.cache
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.exe
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.pdb
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe.config
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe
+D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.pdb

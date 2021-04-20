@@ -8,11 +8,7 @@ namespace TrainInformation
 {
     class DataManager
     {
-        public static List<SearchTrain> st = new List<SearchTrain>();
-        public static void Load()
-        {
-            string tempAdultcharge =
-
-        }
+        
+        
     }
 }

@@ -26,6 +26,8 @@ namespace TrainInformation
             XElement resultsXElement = XElement.Parse(results);
             return resultsXElement;
         }
+        public static List<SearchTrain> st = new List<SearchTrain>();
+
         public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId)
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
@@ -37,31 +39,35 @@ namespace TrainInformation
             url += "&arrPlaceId=" + arrPlaceId;
             url += "&depPlandTime=" + date;
             url += "&trainGradeCode=02";
-            /*
-                 <item>
-                    <adultcharge>0</adultcharge>
-                    <arrplacename>하양</arrplacename>
-                    <arrplandtime>20210420215100</arrplandtime>
-                    <depplacename>동대구</depplacename>
-                    <depplandtime>20210420213500</depplandtime>
-                    <traingradename>무궁화호</traingradename>
-                    <trainno>1795</trainno>
-                </item>
-            */
+
+
             Console.WriteLine(request(url));
             foreach (var item in request(url).Descendants("item"))
             {
+               
+
                 string tempAdultcharge = item.Element("adultcharge").Value;
                 string tempArrplacename = item.Element("arrplacename").Value;
-                string tempArrplandtime = item.Element("arrplandtime").Value;
+                string tempArrplandtime = item.Element("arrplandtime").Value.Substring(8, 2) + " : " + item.Element("arrplandtime").Value.Substring(10, 2); ;
                 string tempDepplacename = item.Element("depplacename").Value;
-                string tempDepplandtime = item.Element("depplandtime").Value;
+                string tempDepplandtime = item.Element("depplandtime").Value.Substring(8,2)+" : " + item.Element("depplandtime").Value.Substring(10, 2);
                 string tempTraingradename = item.Element("traingradename").Value;
                 string tempTrainno = item.Element("trainno").Value;
+                SearchTrain tempSearchTrain = new SearchTrain()
+                {
+                    adultcharge = tempAdultcharge,
+                    arrplacename = tempArrplacename,
+                    arrplandtime = tempArrplandtime,
+                    depplacename = tempDepplacename,
+                    depplandtime = tempDepplandtime,
+                    traingradename = tempTraingradename,
+                    trainno = tempTrainno
+                };
+                st.Add(tempSearchTrain);
+
 
             }
         }
-        public static List<SearchTrain> st = new List<SearchTrain>();
         
         public Dictionary<string, string> getCtyCodeList()
         {

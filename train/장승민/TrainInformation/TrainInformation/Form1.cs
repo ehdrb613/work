@@ -86,6 +86,7 @@ namespace TrainInformation
         private void btn_search_train_Click(object sender, EventArgs e)
         {
             get.getStrtpntAlocFndTrainInfo(textBox_dept_date.Text,deptNodeId,arrNodeId);
+            dataGridView1.DataSource = GetUrl.st;
         }
     }
 }
