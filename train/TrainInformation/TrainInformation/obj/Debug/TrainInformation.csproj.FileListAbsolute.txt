@@ -1,0 +1,10 @@
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe.config
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\bin\Debug\TrainInformation.pdb
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csprojAssemblyReference.cache
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.Form1.resources
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.Properties.Resources.resources
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csproj.GenerateResource.cache
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csproj.CoreCompileInputs.cache
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.exe
+D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.pdb
