@@ -10,17 +10,19 @@ using System.Windows.Forms;
 
 namespace donggyu_1023
 {
-    public partial class Main : Form
+    public partial class ArrivalInfo : Form
     {
-        public Main()
+        public ArrivalInfo()
         {
             InitializeComponent();
+            DataManager_D.getCtyCodeList();
+            DataManager_D.getVhcleKndList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            ArrivalInfo ai = new ArrivalInfo();
-            ai.ShowDialog();
+            
+            DataManager_D.AcctoTrainSttnList(DataManager_D.DAEGU);
         }
     }
 }
