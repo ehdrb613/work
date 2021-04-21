@@ -17,7 +17,11 @@ namespace donggyu_1023
         public static List<Train_D> trainGradeCode = new List<Train_D>();
         public static List<Train_D> TrainSttnCode = new List<Train_D>();
         public static List<Train_D> TrainInfo = new List<Train_D>();
-
+        public static List<Train_D> AllTrainCode = new List<Train_D>();
+        public static string[] ktxSttn_gungbu =
+        {
+           " NAT110147","NAT010000","NAT010091","NATH10219","NAT010415","NATH10960","NAT011668"
+        };
         public const int SEOUL = 11;
         public const int SEJOUNG = 12;
         public const int BUSAN = 21;
@@ -49,10 +53,58 @@ namespace donggyu_1023
         public const string KTX_LEEEM = "16";//ktx 이음
         public const string SRT = "17";//SRT
 
-
+        static DataManager_D()
+        {
+            getAllsttnCode();
+            getCtyCodeList();
+            getVhcleKndList();
+        }
 
         #region api 정보 호출
+        //모든 기차역 코드 정보
+        public static void getAllsttnCode()
+        {
+            string results = "";
+            try
+            {
+                results = File.ReadAllText(@"./AllTrainCode.xml");
+                Console.WriteLine("AllTrainCode.xml load 성공");
 
+                XElement AllsttnCode = XElement.Parse(results);
+                //도시 코드 저장
+                foreach (var item in AllsttnCode.Descendants("item"))
+                {
+                    string tempNodeid = item.Element("nodeid").Value;
+                    string tempNodename = item.Element("nodename").Value;
+
+                    Train_D td = new Train_D()
+                    {
+                        nodeid = tempNodeid,
+                        nodename = tempNodename
+                    };
+
+                    AllTrainCode.Add(td);
+                }
+                //확인용
+                foreach (var item in AllTrainCode)
+                {
+                    Console.WriteLine(item.nodename);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.StackTrace);
+                throw;
+            }
+          
+
+
+            
+          
+        }
+        
         //지역 코드 정보
         public static void getCtyCodeList()
         {
@@ -231,73 +283,72 @@ namespace donggyu_1023
 
         }
 
-
-      
-        static void getStrtTrainInfo(string arrPlacId)
+        //출발도착정보
+        public static void ShowInfo(string depPlaceId, string arrPlaceId, string gradeCode = "")
         {
+            TrainInfo.Clear();
+            string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
+            url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
+            url += "&depPlaceId=" + depPlaceId;
+            url += "&arrPlaceId=" + arrPlaceId;
+            url += "&depPlandTime=" + "20210421";//DateTime.Now.ToString("yyyyMMdd");
 
-            try
-            {
-                for (int i = 0; i < length; i++)
-                {
-
-                }
-                string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
-                url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
-                url += "&depPlaceId=" + depPlaceId;//출발역
-                url += "&arrPlaceId=" + arrPlacId;//도착역
-                url += "&depPlandTime=" + DateTime.Now.ToString("yyyyMMdd");
-                url += "&trainGradeCode=00";
-
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "GET";
-
-                string results = string.Empty;
-                HttpWebResponse response;
-                using (response = request.GetResponse() as HttpWebResponse)
-                {
-                    StreamReader reader = new StreamReader(response.GetResponseStream());
-                    results = reader.ReadToEnd();
-                }
-                XElement trainInfo = XElement.Parse(results);
-
-                foreach (var item in trainInfo.Descendants("item"))
-                {
-                    int tempCityCode = int.Parse(item.Element("citycode").Value);
-                    string tempCtiyName = item.Element("cityname").Value;
-
-                    Train_D td = new Train_D()
-                    {
-                        citycode = tempCityCode,
-                        cityname = tempCtiyName
-                    };
-
-                    trainGradeCode.Add(td);
-
-
-                }
-                //확인용
-                foreach (var item in trainGradeCode)
-                {
-                    Console.WriteLine(item.citycode);
-
-                }
-                Console.WriteLine(results);
+            if (gradeCode != "") 
+            { 
+                url += "&trainGradeCode=" + gradeCode;
             }
 
-            catch (Exception ex)
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+
+            string results = string.Empty;
+            HttpWebResponse response;
+            using (response = request.GetResponse() as HttpWebResponse)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                System.Windows.Forms.MessageBox.Show(ex.StackTrace);
-                throw;
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                results = reader.ReadToEnd();
             }
-           
+
+
+            XElement ShowInfo = XElement.Parse(results);
+            //도시 코드 저장
+            foreach (var item in ShowInfo.Descendants("item"))
+            {
+
+                string tmpTraingradename = item.Element("traingradename").Value;//차량종류명
+                string tmpDepplandtime = item.Element("depplandtime").Value.Substring(0, 14);//차량출발시간
+                string tmpArrplandtime = item.Element("arrplandtime").Value.Substring(0, 14);//도착시간
+                string tmpDepplacename = item.Element("depplacename").Value;//출발지
+                string tmpArrplacename = item.Element("arrplacename").Value;//도착지
+                string tmpTrainno = item.Element("trainno").Value;//열차번호
+                string tmpNodename = item.Element("arrplacename").Value + "역";//도착지
+                Console.WriteLine(tmpDepplandtime);
+                Train_D td = new Train_D()
+                {
+                    traingradename = tmpTraingradename,
+                    depplandtime = DateTime.Parse(tmpDepplandtime).ToString("yyyy-MM-dd-HH:mm:ss"),
+                    arrplandtime = DateTime.Parse(tmpArrplandtime).ToString("yyyy-MM-dd-HH:mm:ss"),
+                    depplacename = tmpDepplacename,
+                    arrplacename = tmpArrplacename,
+                    trainno = tmpTrainno,
+                    nodename = tmpNodename
+                };
+
+                TrainInfo.Add(td);
+
+
+            }
+            //확인용
+            foreach (var item in TrainInfo)
+            {
+                Console.WriteLine(item.traingradename + item.trainno);
+
+            }
         }
 
 
-
-        #endregion api 정보호출
-    }
+            #endregion api 정보호출
+        }
 
 
 

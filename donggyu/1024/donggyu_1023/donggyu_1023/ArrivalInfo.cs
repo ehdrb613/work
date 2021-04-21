@@ -15,8 +15,6 @@ namespace donggyu_1023
         public ArrivalInfo()
         {
             InitializeComponent();
-            DataManager_D.getCtyCodeList();
-            DataManager_D.getVhcleKndList();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

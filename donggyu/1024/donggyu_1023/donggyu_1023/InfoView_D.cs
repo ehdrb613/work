@@ -12,8 +12,8 @@ namespace donggyu_1023
 {
     public partial class InfoView_D : Form
     {
-        private string nodeid;
-        private string nodename;
+        string nodeidStart="";
+        string nodeidEnd="";
         
         public InfoView_D()
         {
@@ -21,11 +21,57 @@ namespace donggyu_1023
             //DataManager_D.TrainSttnCode
             for (int i = 0; i < DataManager_D.TrainSttnCode.Count; i++)
             {
-                trainCombo.Items.Add(DataManager_D.TrainSttnCode[i].nodename);
+                trainComboEnd.Items.Add(DataManager_D.TrainSttnCode[i].nodename);
             }
-            trainCombo.SelectedIndex = 0;
+            trainComboEnd.SelectedIndex = 0;
+
+            foreach (var item in DataManager_D.AllTrainCode)
+            {
+                trainComboStart.Items.Add(item.nodename);
+            }
+            
+
+
+
         }
 
-        
+        private void infoClick_Click(object sender, EventArgs e)
+        {
+            if(trainComboStart.Text.Trim()!="" && trainComboEnd.Text.Trim() != "") 
+            {
+                try
+                {
+                    foreach (var item in DataManager_D.TrainSttnCode)
+                    {
+                        if(item.nodename == trainComboEnd.Text)
+                        {
+                            nodeidEnd = item.nodeid;
+                            Console.WriteLine(nodeidEnd);
+                        }
+                    }
+                    foreach (var item in DataManager_D.AllTrainCode)
+                    {
+                        if (item.nodename == trainComboStart.Text)
+                        {
+                            nodeidStart = item.nodeid;
+                            Console.WriteLine(nodeidStart);
+
+                        }
+                    }
+                
+                    DataManager_D.ShowInfo(nodeidStart, nodeidEnd);
+                    dataGridView1.DataSource= null;
+                    dataGridView1.DataSource = DataManager_D.TrainInfo;
+                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                    throw;
+                }
+               
+            }
+        }
     }
 }
