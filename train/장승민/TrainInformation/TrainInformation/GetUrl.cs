@@ -12,15 +12,25 @@ namespace TrainInformation
 {
     class GetUrl
     {
-        public String getAllTrain()
+
+        public Dictionary<string, string> getAllTrain()
         {
             String allTrain = File.ReadAllText(@"./AllTrainCode.xml");
             XElement carXElement = XElement.Parse(allTrain);
-            return allTrain;
+
+
+            Dictionary<string, string> allTrains = new Dictionary<string, string>();
+
+            foreach (var item in carXElement.Descendants("item"))
+            {
+                allTrains.Add(item.Element("nodeid").Value, item.Element("nodename").Value);
+            }
+
+            return allTrains;
+
         }
-        public void autoCollection()
-        {
-        }
+
+
         public XElement request(string url)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -38,19 +48,19 @@ namespace TrainInformation
         }
         public static List<SearchTrain> st = new List<SearchTrain>();
 
-        public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId, string trainGrade = "", string trainGrade2 = "")
+        public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId, string trainGrade = "all", string trainGrade2 = "all")
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
             //url += "?ServiceKey=0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D";
-            url += "&numOfRows=100";
+            url += "&numOfRows=500";
             url += "&pageNo=1";
             url += "&depPlaceId=" + depPlaceId;
             url += "&arrPlaceId=" + arrPlaceId;
             url += "&depPlandTime=" + date;
 
 
-            Console.WriteLine(request(url));
+            //Console.WriteLine(request(url));
 
             st.Clear();
             foreach (var item in request(url).Descendants("item"))
@@ -63,9 +73,9 @@ namespace TrainInformation
                 string tempTraingradename = item.Element("traingradename").Value;
                 string tempTrainno = item.Element("trainno").Value;
 
-                if (trainGrade != "" || trainGrade2 != "")
+                if (trainGrade == "all" || trainGrade2 == "all")
                 {
-                    if ((tempTraingradename == trainGrade) || (tempTraingradename == trainGrade2))
+                    if (long.Parse(item.Element("depplandtime").Value) >= long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")))
                     {
                         SearchTrain tempSearchTrain = new SearchTrain()
                         {
@@ -79,21 +89,30 @@ namespace TrainInformation
                         };
                         st.Add(tempSearchTrain);
                     }
+
                 }
                 else
                 {
-                    SearchTrain tempSearchTrain = new SearchTrain()
+                    if ((tempTraingradename.Contains(trainGrade)) || (tempTraingradename.Contains(trainGrade2)))
                     {
-                        adultcharge = tempAdultcharge,
-                        arrplacename = tempArrplacename,
-                        arrplandtime = tempArrplandtime,
-                        depplacename = tempDepplacename,
-                        depplandtime = tempDepplandtime,
-                        traingradename = tempTraingradename,
-                        trainno = tempTrainno
-                    };
-                    st.Add(tempSearchTrain);
+                        if (long.Parse(item.Element("depplandtime").Value) >= long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")))
+                        {
+                            SearchTrain tempSearchTrain = new SearchTrain()
+                            {
+                                adultcharge = tempAdultcharge,
+                                arrplacename = tempArrplacename,
+                                arrplandtime = tempArrplandtime,
+                                depplacename = tempDepplacename,
+                                depplandtime = tempDepplandtime,
+                                traingradename = tempTraingradename,
+                                trainno = tempTrainno
+                            };
+                            st.Add(tempSearchTrain);
+                        }
+                    }
+
                 }
+                
             }
         }
 
@@ -119,7 +138,7 @@ namespace TrainInformation
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoTrainSttnList"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
             //url += "?ServiceKey=0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D";
-            url += "&numOfRows=100";
+            url += "&numOfRows=104";
             url += "&pageNo=1";
             url += "&cityCode=" + cityCode;
 
