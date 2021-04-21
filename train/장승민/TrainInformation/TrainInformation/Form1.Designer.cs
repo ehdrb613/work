@@ -44,8 +44,14 @@ namespace TrainInformation
             this.comboBox_arrtCity = new System.Windows.Forms.ComboBox();
             this.Btn_dept_station = new System.Windows.Forms.Button();
             this.Btn_arr_station = new System.Windows.Forms.Button();
-            this.searchTrainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.getUrlBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.R_Tonggeun = new System.Windows.Forms.RadioButton();
+            this.R_Mugoonhwa_Nuriro = new System.Windows.Forms.RadioButton();
+            this.R_ITX_Chungchoon = new System.Windows.Forms.RadioButton();
+            this.R_SaeMaeul_ITX_SaeMaeul = new System.Windows.Forms.RadioButton();
+            this.R_KTX_SRT = new System.Windows.Forms.RadioButton();
+            this.R_AllTrain = new System.Windows.Forms.RadioButton();
             this.adultchargeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplacenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,8 +59,11 @@ namespace TrainInformation
             this.arrplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traingradenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trainnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchTrainBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.getUrlBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getUrlBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,45 +71,42 @@ namespace TrainInformation
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 31);
+            this.label1.Location = new System.Drawing.Point(260, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "출발역";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 101);
+            this.label2.Location = new System.Drawing.Point(260, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
+            this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "도착역";
             // 
             // textBox_Dept
             // 
-            this.textBox_Dept.Location = new System.Drawing.Point(423, 28);
-            this.textBox_Dept.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_Dept.Location = new System.Drawing.Point(448, 22);
             this.textBox_Dept.Name = "textBox_Dept";
-            this.textBox_Dept.Size = new System.Drawing.Size(114, 25);
+            this.textBox_Dept.Size = new System.Drawing.Size(100, 21);
             this.textBox_Dept.TabIndex = 2;
+            this.textBox_Dept.TextChanged += new System.EventHandler(this.textBox_Dept_TextChanged);
             // 
             // textBox_Arrive
             // 
-            this.textBox_Arrive.Location = new System.Drawing.Point(423, 96);
-            this.textBox_Arrive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_Arrive.Location = new System.Drawing.Point(448, 77);
             this.textBox_Arrive.Name = "textBox_Arrive";
-            this.textBox_Arrive.Size = new System.Drawing.Size(114, 25);
+            this.textBox_Arrive.Size = new System.Drawing.Size(100, 21);
             this.textBox_Arrive.TabIndex = 3;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 144);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 243);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(887, 404);
+            this.groupBox1.Size = new System.Drawing.Size(867, 332);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -118,20 +124,19 @@ namespace TrainInformation
             this.traingradenameDataGridViewTextBoxColumn,
             this.trainnoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.searchTrainBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 25);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(873, 378);
+            this.dataGridView1.Size = new System.Drawing.Size(861, 312);
             this.dataGridView1.TabIndex = 0;
             // 
             // btn_change_dept_arrive
             // 
-            this.btn_change_dept_arrive.Location = new System.Drawing.Point(456, 60);
-            this.btn_change_dept_arrive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_change_dept_arrive.Location = new System.Drawing.Point(477, 48);
             this.btn_change_dept_arrive.Name = "btn_change_dept_arrive";
-            this.btn_change_dept_arrive.Size = new System.Drawing.Size(53, 29);
+            this.btn_change_dept_arrive.Size = new System.Drawing.Size(46, 23);
             this.btn_change_dept_arrive.TabIndex = 5;
             this.btn_change_dept_arrive.Text = "↕";
             this.btn_change_dept_arrive.UseVisualStyleBackColor = true;
@@ -139,10 +144,9 @@ namespace TrainInformation
             // 
             // btn_search_train
             // 
-            this.btn_search_train.Location = new System.Drawing.Point(605, 28);
-            this.btn_search_train.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_search_train.Location = new System.Drawing.Point(607, 22);
             this.btn_search_train.Name = "btn_search_train";
-            this.btn_search_train.Size = new System.Drawing.Size(86, 95);
+            this.btn_search_train.Size = new System.Drawing.Size(75, 76);
             this.btn_search_train.TabIndex = 6;
             this.btn_search_train.Text = "조회";
             this.btn_search_train.UseVisualStyleBackColor = true;
@@ -151,46 +155,42 @@ namespace TrainInformation
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 31);
+            this.label3.Location = new System.Drawing.Point(20, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 7;
             this.label3.Text = "출발일";
             // 
             // textBox_dept_date
             // 
-            this.textBox_dept_date.Location = new System.Drawing.Point(79, 28);
-            this.textBox_dept_date.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_dept_date.Location = new System.Drawing.Point(69, 22);
             this.textBox_dept_date.Name = "textBox_dept_date";
-            this.textBox_dept_date.Size = new System.Drawing.Size(114, 25);
+            this.textBox_dept_date.Size = new System.Drawing.Size(100, 21);
             this.textBox_dept_date.TabIndex = 8;
             // 
             // comboBox_deptCity
             // 
             this.comboBox_deptCity.FormattingEnabled = true;
-            this.comboBox_deptCity.Location = new System.Drawing.Point(278, 28);
-            this.comboBox_deptCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_deptCity.Location = new System.Drawing.Point(321, 22);
             this.comboBox_deptCity.Name = "comboBox_deptCity";
-            this.comboBox_deptCity.Size = new System.Drawing.Size(138, 23);
+            this.comboBox_deptCity.Size = new System.Drawing.Size(121, 20);
             this.comboBox_deptCity.TabIndex = 9;
             this.comboBox_deptCity.SelectedIndexChanged += new System.EventHandler(this.comboBox_deptCity_SelectedIndexChanged);
             // 
             // comboBox_arrtCity
             // 
             this.comboBox_arrtCity.FormattingEnabled = true;
-            this.comboBox_arrtCity.Location = new System.Drawing.Point(278, 96);
-            this.comboBox_arrtCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_arrtCity.Location = new System.Drawing.Point(321, 77);
             this.comboBox_arrtCity.Name = "comboBox_arrtCity";
-            this.comboBox_arrtCity.Size = new System.Drawing.Size(138, 23);
+            this.comboBox_arrtCity.Size = new System.Drawing.Size(121, 20);
             this.comboBox_arrtCity.TabIndex = 10;
             this.comboBox_arrtCity.SelectedIndexChanged += new System.EventHandler(this.comboBox_arrtCity_SelectedIndexChanged);
             // 
             // Btn_dept_station
             // 
-            this.Btn_dept_station.Location = new System.Drawing.Point(545, 28);
-            this.Btn_dept_station.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_dept_station.Location = new System.Drawing.Point(555, 22);
             this.Btn_dept_station.Name = "Btn_dept_station";
-            this.Btn_dept_station.Size = new System.Drawing.Size(53, 29);
+            this.Btn_dept_station.Size = new System.Drawing.Size(46, 23);
             this.Btn_dept_station.TabIndex = 11;
             this.Btn_dept_station.Text = "선택";
             this.Btn_dept_station.UseVisualStyleBackColor = true;
@@ -198,22 +198,98 @@ namespace TrainInformation
             // 
             // Btn_arr_station
             // 
-            this.Btn_arr_station.Location = new System.Drawing.Point(545, 96);
-            this.Btn_arr_station.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_arr_station.Location = new System.Drawing.Point(555, 77);
             this.Btn_arr_station.Name = "Btn_arr_station";
-            this.Btn_arr_station.Size = new System.Drawing.Size(53, 29);
+            this.Btn_arr_station.Size = new System.Drawing.Size(46, 23);
             this.Btn_arr_station.TabIndex = 12;
             this.Btn_arr_station.Text = "선택";
             this.Btn_arr_station.UseVisualStyleBackColor = true;
             this.Btn_arr_station.Click += new System.EventHandler(this.Btn_arr_station_Click);
             // 
-            // searchTrainBindingSource
+            // monthCalendar1
             // 
-            this.searchTrainBindingSource.DataSource = typeof(TrainInformation.SearchTrain);
+            this.monthCalendar1.Location = new System.Drawing.Point(12, 55);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 13;
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
-            // getUrlBindingSource
+            // groupBox2
             // 
-            this.getUrlBindingSource.DataSource = typeof(TrainInformation.GetUrl);
+            this.groupBox2.Controls.Add(this.R_Tonggeun);
+            this.groupBox2.Controls.Add(this.R_Mugoonhwa_Nuriro);
+            this.groupBox2.Controls.Add(this.R_ITX_Chungchoon);
+            this.groupBox2.Controls.Add(this.R_SaeMaeul_ITX_SaeMaeul);
+            this.groupBox2.Controls.Add(this.R_KTX_SRT);
+            this.groupBox2.Controls.Add(this.R_AllTrain);
+            this.groupBox2.Location = new System.Drawing.Point(700, 25);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(179, 179);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // R_Tonggeun
+            // 
+            this.R_Tonggeun.AutoSize = true;
+            this.R_Tonggeun.Location = new System.Drawing.Point(24, 155);
+            this.R_Tonggeun.Name = "R_Tonggeun";
+            this.R_Tonggeun.Size = new System.Drawing.Size(71, 16);
+            this.R_Tonggeun.TabIndex = 5;
+            this.R_Tonggeun.Text = "통근열차";
+            this.R_Tonggeun.UseVisualStyleBackColor = true;
+            // 
+            // R_Mugoonhwa_Nuriro
+            // 
+            this.R_Mugoonhwa_Nuriro.AutoSize = true;
+            this.R_Mugoonhwa_Nuriro.Location = new System.Drawing.Point(24, 129);
+            this.R_Mugoonhwa_Nuriro.Name = "R_Mugoonhwa_Nuriro";
+            this.R_Mugoonhwa_Nuriro.Size = new System.Drawing.Size(121, 16);
+            this.R_Mugoonhwa_Nuriro.TabIndex = 4;
+            this.R_Mugoonhwa_Nuriro.Text = "무궁화호 / 누리로";
+            this.R_Mugoonhwa_Nuriro.UseVisualStyleBackColor = true;
+            // 
+            // R_ITX_Chungchoon
+            // 
+            this.R_ITX_Chungchoon.AutoSize = true;
+            this.R_ITX_Chungchoon.Location = new System.Drawing.Point(24, 77);
+            this.R_ITX_Chungchoon.Name = "R_ITX_Chungchoon";
+            this.R_ITX_Chungchoon.Size = new System.Drawing.Size(80, 16);
+            this.R_ITX_Chungchoon.TabIndex = 3;
+            this.R_ITX_Chungchoon.Text = "ITX - 청춘";
+            this.R_ITX_Chungchoon.UseVisualStyleBackColor = true;
+            // 
+            // R_SaeMaeul_ITX_SaeMaeul
+            // 
+            this.R_SaeMaeul_ITX_SaeMaeul.AutoSize = true;
+            this.R_SaeMaeul_ITX_SaeMaeul.Location = new System.Drawing.Point(24, 103);
+            this.R_SaeMaeul_ITX_SaeMaeul.Name = "R_SaeMaeul_ITX_SaeMaeul";
+            this.R_SaeMaeul_ITX_SaeMaeul.Size = new System.Drawing.Size(146, 16);
+            this.R_SaeMaeul_ITX_SaeMaeul.TabIndex = 2;
+            this.R_SaeMaeul_ITX_SaeMaeul.Text = "새마을호 / ITX-새마을";
+            this.R_SaeMaeul_ITX_SaeMaeul.UseVisualStyleBackColor = true;
+            // 
+            // R_KTX_SRT
+            // 
+            this.R_KTX_SRT.AutoSize = true;
+            this.R_KTX_SRT.Location = new System.Drawing.Point(24, 51);
+            this.R_KTX_SRT.Name = "R_KTX_SRT";
+            this.R_KTX_SRT.Size = new System.Drawing.Size(85, 16);
+            this.R_KTX_SRT.TabIndex = 1;
+            this.R_KTX_SRT.Text = "KTX / SRT";
+            this.R_KTX_SRT.UseVisualStyleBackColor = true;
+            // 
+            // R_AllTrain
+            // 
+            this.R_AllTrain.AutoSize = true;
+            this.R_AllTrain.Checked = true;
+            this.R_AllTrain.Location = new System.Drawing.Point(24, 25);
+            this.R_AllTrain.Name = "R_AllTrain";
+            this.R_AllTrain.Size = new System.Drawing.Size(47, 16);
+            this.R_AllTrain.TabIndex = 0;
+            this.R_AllTrain.TabStop = true;
+            this.R_AllTrain.Text = "전체";
+            this.R_AllTrain.UseVisualStyleBackColor = true;
             // 
             // adultchargeDataGridViewTextBoxColumn
             // 
@@ -272,11 +348,21 @@ namespace TrainInformation
             this.trainnoDataGridViewTextBoxColumn.Name = "trainnoDataGridViewTextBoxColumn";
             this.trainnoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // searchTrainBindingSource
+            // 
+            this.searchTrainBindingSource.DataSource = typeof(TrainInformation.SearchTrain);
+            // 
+            // getUrlBindingSource
+            // 
+            this.getUrlBindingSource.DataSource = typeof(TrainInformation.GetUrl);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 562);
+            this.ClientSize = new System.Drawing.Size(909, 587);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.Btn_arr_station);
             this.Controls.Add(this.Btn_dept_station);
             this.Controls.Add(this.comboBox_arrtCity);
@@ -290,11 +376,12 @@ namespace TrainInformation
             this.Controls.Add(this.textBox_Dept);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getUrlBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -327,6 +414,14 @@ namespace TrainInformation
         private System.Windows.Forms.DataGridViewTextBoxColumn arrplandtimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn traingradenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn trainnoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton R_Tonggeun;
+        private System.Windows.Forms.RadioButton R_Mugoonhwa_Nuriro;
+        private System.Windows.Forms.RadioButton R_ITX_Chungchoon;
+        private System.Windows.Forms.RadioButton R_SaeMaeul_ITX_SaeMaeul;
+        private System.Windows.Forms.RadioButton R_KTX_SRT;
+        private System.Windows.Forms.RadioButton R_AllTrain;
     }
 }
 

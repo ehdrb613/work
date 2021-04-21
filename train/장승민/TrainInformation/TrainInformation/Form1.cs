@@ -20,7 +20,9 @@ namespace TrainInformation
         public Form1()
         {
             InitializeComponent();
-            
+           
+
+
             foreach (var Value in get.getCtyCodeList().Values)
             {
                 comboBox_deptCity.Items.Add(Value);
@@ -85,8 +87,58 @@ namespace TrainInformation
 
         private void btn_search_train_Click(object sender, EventArgs e)
         {
-            get.getStrtpntAlocFndTrainInfo(textBox_dept_date.Text,deptNodeId,arrNodeId);
+            String typeOfTrain1 = "";
+            String typoOfTrain2 = "";
+            if (R_AllTrain.Checked) typeOfTrain1 = "";
+            else if (R_KTX_SRT.Checked)
+            {
+                typeOfTrain1 = "KTX";
+                typoOfTrain2 = "SRT";
+            }
+            else if (R_Mugoonhwa_Nuriro.Checked)
+            {
+                typeOfTrain1 = "무궁화호";
+                typoOfTrain2 = "누리로";
+            }
+            else if (R_ITX_Chungchoon.Checked)
+            {
+                typeOfTrain1 = "ITX-청춘";
+            }else if (R_SaeMaeul_ITX_SaeMaeul.Checked)
+            {
+                typeOfTrain1 = "새마을";
+                typoOfTrain2 = "ITX-새마을";
+            }else if (R_Tonggeun.Checked)
+            {
+                typeOfTrain1 = "통근열차";
+            }
+            get.getStrtpntAlocFndTrainInfo(textBox_dept_date.Text,deptNodeId,arrNodeId, typeOfTrain1, typoOfTrain2);
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = GetUrl.st;
+        }
+
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            textBox_dept_date.Text = monthCalendar1.SelectionRange.Start.ToString("yyyyMMdd");
+        }
+        
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox_Dept_TextChanged(object sender, EventArgs e)
+        {
+
+            var source = new AutoCompleteStringCollection();
+
+            // source에 추가한다.
+            source.Add(get.getAllTrain());
+
+
+            textBox_Dept.AutoCompleteCustomSource = source;
+            textBox_Dept.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            textBox_Dept.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
     }
 }
