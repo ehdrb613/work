@@ -22,7 +22,9 @@ namespace donggyu_1023
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             
-            DataManager_D.AcctoTrainSttnList(DataManager_D.DAEGU);
+            DataManager_D.AcctoTrainSttnList(DataManager_D.DAEGU, "DAEGU");
+            InfoView_D id = new InfoView_D();
+            id.ShowDialog();
         }
     }
 }

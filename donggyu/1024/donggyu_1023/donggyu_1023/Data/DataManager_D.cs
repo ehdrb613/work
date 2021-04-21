@@ -15,7 +15,8 @@ namespace donggyu_1023
     {
         static HttpClient client = new HttpClient();
         public static List<Train_D> trainGradeCode = new List<Train_D>();
-
+        public static List<Train_D> TrainSttnCode = new List<Train_D>();
+        public static List<Train_D> TrainInfo = new List<Train_D>();
 
         public const int SEOUL = 11;
         public const int SEJOUNG = 12;
@@ -65,22 +66,25 @@ namespace donggyu_1023
               
                 XElement ctyCode = XElement.Parse(results);
                 //도시 코드 저장
-                foreach (var item in ctyCode.Descendants("citycode"))
+                foreach (var item in ctyCode.Descendants("item"))
                 {
-                    int tempCityCode = int.Parse(ctyCode.Element("citycode").Value);
-                    string tempCtiyName = ctyCode.Element("cityname").Value;
-
+                    int tempCityCode = int.Parse(item.Element("citycode").Value);
+                    string tempCtiyName = item.Element("cityname").Value;
+                    
                     Train_D td = new Train_D()
                     {
                         citycode = tempCityCode,
                         cityname = tempCtiyName
                     };
+
                     trainGradeCode.Add(td);
+
                     
                 }
+                //확인용
                 foreach (var item in trainGradeCode)
                 {
-                    Console.WriteLine(item.citycode + item.cityname);
+                    Console.WriteLine(item.citycode);
 
                 }
               
@@ -111,7 +115,7 @@ namespace donggyu_1023
 
 
                 System.Windows.Forms.MessageBox.Show(ex.Message);
-
+                System.Windows.Forms.MessageBox.Show(ex.StackTrace);
                 getCtyCodeList();//다시 호출
             }
 
@@ -152,66 +156,150 @@ namespace donggyu_1023
                 File.WriteAllText(@"./VhcleKnd.xml", VhcleKnd.ToString());//Api 불러온 정보 저장
 
                 System.Windows.Forms.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.StackTrace);
 
                 getVhcleKndList();//다시 호출
             }
         }
-
-        public static void AcctoTrainSttnList(int city)
+        //기차역이름 코드 정보
+        public static void AcctoTrainSttnList(int city,string cityName)
         {
+            string results = "";
 
-        
-        string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoTrainSttnList"; // URL
-            url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
-            url += "&numOfRows=10";
-            url += "&pageNo=1";
-            url += "&cityCode=" + city;
-
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            string results = string.Empty;
-            HttpWebResponse response;
-            using (response = request.GetResponse() as HttpWebResponse)
+            try
             {
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                results = reader.ReadToEnd();
-            }
+                results = File.ReadAllText(@"./TrainSttnList_"+cityName+".xml");
+                XElement TrainSttn = XElement.Parse(results);
+                Console.WriteLine("TrainSttnList.xml load 성공");
+                Console.WriteLine(TrainSttn);
+                
+                //도시 코드 저장
+                foreach (var item in TrainSttn.Descendants("item"))
+                {
+                    string tempNodeid = item.Element("nodeid").Value;
+                    string tempNodename = item.Element("nodename").Value;
 
-            Console.WriteLine(results);
-            XElement TrainSttn = XElement.Parse(results);
-            Console.WriteLine(TrainSttn);
+                    Train_D td = new Train_D()
+                    {
+                        nodeid = tempNodeid,
+                        nodename = tempNodename
+                    };
+
+                    TrainSttnCode.Add(td);
+
+
+                }
+                //확인용
+                foreach (var item in TrainSttnCode)
+                {
+                    Console.WriteLine(item.nodename+item.nodeid);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoTrainSttnList"; // URL
+                url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
+                url += "&numOfRows=10";
+                url += "&pageNo=1";
+                url += "&cityCode=" + city;
+
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "GET";
+
+                results = string.Empty;
+                HttpWebResponse response;
+                using (response = request.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    results = reader.ReadToEnd();
+                }
+
+              
+                XElement TrainSttn = XElement.Parse(results);
+                File.WriteAllText(@"./TrainSttnList_" + cityName + ".xml",TrainSttn.ToString());
+                Console.WriteLine(TrainSttn);
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.StackTrace);
+
+                AcctoTrainSttnList(city, cityName); // 다시 실행
+            }
+        
            
 
         }
 
 
       
-        static void getStrtTrainInfo()
+        static void getStrtTrainInfo(string arrPlacId)
         {
-            string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
-            url += "?ServiceKey=" + "서비스키"; // Service Key
-            url += "&numOfRows=10";
-            url += "&pageNo=1";
-            url += "&depPlaceId=NAT010000";
-            url += "&arrPlaceId=NAT011668";
-            url += "&depPlandTime=20201201";
-            url += "&trainGradeCode=00";
 
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            string results = string.Empty;
-            HttpWebResponse response;
-            using (response = request.GetResponse() as HttpWebResponse)
+            try
             {
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                results = reader.ReadToEnd();
+                for (int i = 0; i < length; i++)
+                {
+
+                }
+                string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
+                url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
+                url += "&depPlaceId=" + depPlaceId;//출발역
+                url += "&arrPlaceId=" + arrPlacId;//도착역
+                url += "&depPlandTime=" + DateTime.Now.ToString("yyyyMMdd");
+                url += "&trainGradeCode=00";
+
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "GET";
+
+                string results = string.Empty;
+                HttpWebResponse response;
+                using (response = request.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    results = reader.ReadToEnd();
+                }
+                XElement trainInfo = XElement.Parse(results);
+
+                foreach (var item in trainInfo.Descendants("item"))
+                {
+                    int tempCityCode = int.Parse(item.Element("citycode").Value);
+                    string tempCtiyName = item.Element("cityname").Value;
+
+                    Train_D td = new Train_D()
+                    {
+                        citycode = tempCityCode,
+                        cityname = tempCtiyName
+                    };
+
+                    trainGradeCode.Add(td);
+
+
+                }
+                //확인용
+                foreach (var item in trainGradeCode)
+                {
+                    Console.WriteLine(item.citycode);
+
+                }
+                Console.WriteLine(results);
             }
 
-            Console.WriteLine(results);
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show(ex.StackTrace);
+                throw;
+            }
+           
         }
+
+
 
         #endregion api 정보호출
     }
+
+
+
+
 }

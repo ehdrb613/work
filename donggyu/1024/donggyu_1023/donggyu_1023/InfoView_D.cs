@@ -12,9 +12,20 @@ namespace donggyu_1023
 {
     public partial class InfoView_D : Form
     {
+        private string nodeid;
+        private string nodename;
+        
         public InfoView_D()
         {
             InitializeComponent();
+            //DataManager_D.TrainSttnCode
+            for (int i = 0; i < DataManager_D.TrainSttnCode.Count; i++)
+            {
+                trainCombo.Items.Add(DataManager_D.TrainSttnCode[i].nodename);
+            }
+            trainCombo.SelectedIndex = 0;
         }
+
+        
     }
 }
