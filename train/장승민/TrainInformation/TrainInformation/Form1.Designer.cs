@@ -40,8 +40,6 @@ namespace TrainInformation
             this.btn_search_train = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_dept_date = new System.Windows.Forms.TextBox();
-            this.Btn_dept_station = new System.Windows.Forms.Button();
-            this.Btn_arr_station = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.R_Tonggeun = new System.Windows.Forms.RadioButton();
@@ -92,6 +90,7 @@ namespace TrainInformation
             // 
             this.textBox_Dept.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.textBox_Dept.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox_Dept.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.textBox_Dept.Location = new System.Drawing.Point(322, 55);
             this.textBox_Dept.Name = "textBox_Dept";
             this.textBox_Dept.Size = new System.Drawing.Size(100, 21);
@@ -100,6 +99,7 @@ namespace TrainInformation
             // 
             // textBox_Arrive
             // 
+            this.textBox_Arrive.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.textBox_Arrive.Location = new System.Drawing.Point(322, 110);
             this.textBox_Arrive.Name = "textBox_Arrive";
             this.textBox_Arrive.Size = new System.Drawing.Size(100, 21);
@@ -148,7 +148,7 @@ namespace TrainInformation
             // 
             // btn_search_train
             // 
-            this.btn_search_train.Location = new System.Drawing.Point(481, 55);
+            this.btn_search_train.Location = new System.Drawing.Point(442, 54);
             this.btn_search_train.Name = "btn_search_train";
             this.btn_search_train.Size = new System.Drawing.Size(75, 76);
             this.btn_search_train.TabIndex = 6;
@@ -171,26 +171,6 @@ namespace TrainInformation
             this.textBox_dept_date.Name = "textBox_dept_date";
             this.textBox_dept_date.Size = new System.Drawing.Size(100, 21);
             this.textBox_dept_date.TabIndex = 8;
-            // 
-            // Btn_dept_station
-            // 
-            this.Btn_dept_station.Location = new System.Drawing.Point(429, 55);
-            this.Btn_dept_station.Name = "Btn_dept_station";
-            this.Btn_dept_station.Size = new System.Drawing.Size(46, 23);
-            this.Btn_dept_station.TabIndex = 11;
-            this.Btn_dept_station.Text = "선택";
-            this.Btn_dept_station.UseVisualStyleBackColor = true;
-            this.Btn_dept_station.Click += new System.EventHandler(this.Btn_dept_station_Click);
-            // 
-            // Btn_arr_station
-            // 
-            this.Btn_arr_station.Location = new System.Drawing.Point(429, 110);
-            this.Btn_arr_station.Name = "Btn_arr_station";
-            this.Btn_arr_station.Size = new System.Drawing.Size(46, 23);
-            this.Btn_arr_station.TabIndex = 12;
-            this.Btn_arr_station.Text = "선택";
-            this.Btn_arr_station.UseVisualStyleBackColor = true;
-            this.Btn_arr_station.Click += new System.EventHandler(this.Btn_arr_station_Click);
             // 
             // monthCalendar1
             // 
@@ -279,6 +259,7 @@ namespace TrainInformation
             this.R_AllTrain.TabStop = true;
             this.R_AllTrain.Text = "전체";
             this.R_AllTrain.UseVisualStyleBackColor = true;
+            this.R_AllTrain.CheckedChanged += new System.EventHandler(this.R_AllTrain_CheckedChanged);
             // 
             // statusStrip1
             // 
@@ -375,8 +356,6 @@ namespace TrainInformation
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.Btn_arr_station);
-            this.Controls.Add(this.Btn_dept_station);
             this.Controls.Add(this.textBox_dept_date);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_search_train);
@@ -413,8 +392,6 @@ namespace TrainInformation
         private System.Windows.Forms.Button btn_search_train;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_dept_date;
-        private System.Windows.Forms.Button Btn_dept_station;
-        private System.Windows.Forms.Button Btn_arr_station;
         private System.Windows.Forms.BindingSource searchTrainBindingSource;
         private System.Windows.Forms.BindingSource getUrlBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn adultchargeDataGridViewTextBoxColumn;

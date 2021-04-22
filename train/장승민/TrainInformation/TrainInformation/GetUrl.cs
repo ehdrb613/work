@@ -48,7 +48,7 @@ namespace TrainInformation
         }
         public static List<SearchTrain> st = new List<SearchTrain>();
 
-        public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId, string trainGrade = "all", string trainGrade2 = "all")
+        public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId, string[] trainName )
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
@@ -73,7 +73,7 @@ namespace TrainInformation
                 string tempTraingradename = item.Element("traingradename").Value;
                 string tempTrainno = item.Element("trainno").Value;
 
-                if (trainGrade == "all" || trainGrade2 == "all")
+                if (trainName[0] == "all" || trainName[1] == "all")
                 {
                     if (long.Parse(item.Element("depplandtime").Value) >= long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")))
                     {
@@ -93,7 +93,7 @@ namespace TrainInformation
                 }
                 else
                 {
-                    if ((tempTraingradename.Contains(trainGrade)) || (tempTraingradename.Contains(trainGrade2)))
+                    if ((tempTraingradename.Contains(trainName[0])) || (tempTraingradename.Contains(trainName[1])))
                     {
                         if (long.Parse(item.Element("depplandtime").Value) >= long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")))
                         {
