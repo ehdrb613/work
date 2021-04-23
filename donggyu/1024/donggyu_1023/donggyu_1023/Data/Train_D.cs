@@ -24,6 +24,7 @@ namespace donggyu_1023.Data
         public string adultcharge { set; get; } //운임
         public string trainno { set; get; } //열차번호
 
+        public string outTime { set; get; } //도착시간
 
     }
 }
