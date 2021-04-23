@@ -48,7 +48,8 @@ namespace TrainInformation
         }
         public static List<SearchTrain> st = new List<SearchTrain>();
 
-        public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId, string[] trainName )
+
+        public void getStrtpntAlocFndTrainInfo(string date, string depPlaceId, string arrPlaceId, string[] trainName)
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
@@ -65,9 +66,25 @@ namespace TrainInformation
             st.Clear();
             foreach (var item in request(url).Descendants("item"))
             {
+                long remainTimeHour = long.Parse(item.Element("depplandtime").Value.Substring(8, 2)) - long.Parse(DateTime.Now.ToString("HH"));
+                long remainTimeMin = long.Parse(item.Element("depplandtime").Value.Substring(10, 2)) - long.Parse(DateTime.Now.ToString("mm"));
+                if (remainTimeMin < 0)
+                {
+                    remainTimeHour--;
+                    remainTimeMin += 60;
+                }
+                String remainTime;
+                if (remainTimeHour != 0)
+                {
+                    remainTime = remainTimeHour + " 시간 " + remainTimeMin + " 분";
+                }
+                else
+                {
+                    remainTime = remainTimeMin + " 분";
+                }
                 string tempAdultcharge = item.Element("adultcharge").Value;
                 string tempArrplacename = item.Element("arrplacename").Value;
-                string tempArrplandtime = item.Element("arrplandtime").Value.Substring(8, 2) + " : " + item.Element("arrplandtime").Value.Substring(10, 2); ;
+                string tempArrplandtime = item.Element("arrplandtime").Value.Substring(8, 2) + " : " + item.Element("arrplandtime").Value.Substring(10, 2);
                 string tempDepplacename = item.Element("depplacename").Value;
                 string tempDepplandtime = item.Element("depplandtime").Value.Substring(8, 2) + " : " + item.Element("depplandtime").Value.Substring(10, 2);
                 string tempTraingradename = item.Element("traingradename").Value;
@@ -79,7 +96,7 @@ namespace TrainInformation
                     {
                         SearchTrain tempSearchTrain = new SearchTrain()
                         {
-                            adultcharge = tempAdultcharge,
+                            adultcharge = remainTime,
                             arrplacename = tempArrplacename,
                             arrplandtime = tempArrplandtime,
                             depplacename = tempDepplacename,
@@ -99,7 +116,7 @@ namespace TrainInformation
                         {
                             SearchTrain tempSearchTrain = new SearchTrain()
                             {
-                                adultcharge = tempAdultcharge,
+                                adultcharge = remainTimeHour + " : " + remainTimeMin,
                                 arrplacename = tempArrplacename,
                                 arrplandtime = tempArrplandtime,
                                 depplacename = tempDepplacename,
@@ -112,7 +129,7 @@ namespace TrainInformation
                     }
 
                 }
-                
+
             }
         }
 
@@ -138,7 +155,7 @@ namespace TrainInformation
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoTrainSttnList"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
             //url += "?ServiceKey=0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D";
-            url += "&numOfRows=104";
+            url += "&numOfRows=200";
             url += "&pageNo=1";
             url += "&cityCode=" + cityCode;
 

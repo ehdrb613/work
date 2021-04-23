@@ -51,6 +51,7 @@ namespace TrainInformation
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.whatTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.adultchargeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplacenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -283,14 +284,19 @@ namespace TrainInformation
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // adultchargeDataGridViewTextBoxColumn
             // 
             this.adultchargeDataGridViewTextBoxColumn.DataPropertyName = "adultcharge";
-            this.adultchargeDataGridViewTextBoxColumn.HeaderText = "운임";
+            this.adultchargeDataGridViewTextBoxColumn.HeaderText = "남은 시간";
             this.adultchargeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.adultchargeDataGridViewTextBoxColumn.Name = "adultchargeDataGridViewTextBoxColumn";
             this.adultchargeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.adultchargeDataGridViewTextBoxColumn.Width = 80;
             // 
             // depplacenameDataGridViewTextBoxColumn
             // 
@@ -299,6 +305,7 @@ namespace TrainInformation
             this.depplacenameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.depplacenameDataGridViewTextBoxColumn.Name = "depplacenameDataGridViewTextBoxColumn";
             this.depplacenameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.depplacenameDataGridViewTextBoxColumn.Width = 90;
             // 
             // depplandtimeDataGridViewTextBoxColumn
             // 
@@ -394,13 +401,6 @@ namespace TrainInformation
         private System.Windows.Forms.TextBox textBox_dept_date;
         private System.Windows.Forms.BindingSource searchTrainBindingSource;
         private System.Windows.Forms.BindingSource getUrlBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adultchargeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depplacenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depplandtimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn arrplacenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn arrplandtimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn traingradenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn trainnoDataGridViewTextBoxColumn;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton R_Tonggeun;
@@ -412,6 +412,14 @@ namespace TrainInformation
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel whatTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adultchargeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depplacenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn depplandtimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrplacenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arrplandtimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traingradenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn trainnoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

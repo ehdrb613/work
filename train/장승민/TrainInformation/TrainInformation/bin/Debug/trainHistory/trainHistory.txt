@@ -1,0 +1,11 @@
+[2021-04-23 09:52:00] 하이
+[2021-04-23 12:35:51] 인덱스 및 길이는 문자열 내의 위치를 참조해야 합니다.
+매개 변수 이름: length
+[2021-04-23 12:35:51]    위치: System.String.Substring(Int32 startIndex, Int32 length)
+   위치: TrainInformation.GetUrl.getStrtpntAlocFndTrainInfo(String date, String depPlaceId, String arrPlaceId, String[] trainName) 파일 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\GetUrl.cs:줄 69
+   위치: TrainInformation.Form1.searchTrain() 파일 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\Form1.cs:줄 76
+[2021-04-23 12:35:57] 인덱스 및 길이는 문자열 내의 위치를 참조해야 합니다.
+매개 변수 이름: length
+[2021-04-23 12:35:57]    위치: System.String.Substring(Int32 startIndex, Int32 length)
+   위치: TrainInformation.GetUrl.getStrtpntAlocFndTrainInfo(String date, String depPlaceId, String arrPlaceId, String[] trainName) 파일 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\GetUrl.cs:줄 69
+   위치: TrainInformation.Form1.searchTrain() 파일 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\Form1.cs:줄 76
