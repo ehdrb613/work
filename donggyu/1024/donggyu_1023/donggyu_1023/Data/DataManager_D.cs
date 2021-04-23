@@ -55,6 +55,7 @@ namespace donggyu_1023
 
         static DataManager_D()
         {
+            createDirectory();//맨 처음 여기로 이동 Arrivalinfo 에서
             getAllsttnCode();
             getCtyCodeList();
             getVhcleKndList();
@@ -67,6 +68,7 @@ namespace donggyu_1023
             string results = "";
             try
             {
+               
                 results = File.ReadAllText(@"./AllTrainCode.xml");
                 Console.WriteLine("AllTrainCode.xml load 성공");
 
@@ -113,7 +115,7 @@ namespace donggyu_1023
 
             try
             {
-                results = File.ReadAllText(@"./ctyCode.xml");
+                results = File.ReadAllText(@"./dg_xml/ctyCode.xml");
                 Console.WriteLine("ctyCode.xml load 성공");
               
                 XElement ctyCode = XElement.Parse(results);
@@ -162,8 +164,8 @@ namespace donggyu_1023
                 //Console.WriteLine(results);
                 XElement ctyCode = XElement.Parse(results);
 
-                Console.WriteLine(ctyCode);
-                File.WriteAllText(@"./ctyCode.xml", ctyCode.ToString());
+               // Console.WriteLine(ctyCode);
+                File.WriteAllText(@"./dg_xml/ctyCode.xml", ctyCode.ToString());
 
 
                 System.Windows.Forms.MessageBox.Show(ex.Message);
@@ -180,7 +182,7 @@ namespace donggyu_1023
             string results = "";
             try
             {
-                results = File.ReadAllText(@"./VhcleKnd.xml");
+                results = File.ReadAllText(@"./dg_xml/VhcleKnd.xml");
                 Console.WriteLine("VhcleKnd.xml load 성공");
                 Console.WriteLine(results);
             }
@@ -204,8 +206,8 @@ namespace donggyu_1023
 
 
                 XElement VhcleKnd = XElement.Parse(results);
-                Console.WriteLine(VhcleKnd);
-                File.WriteAllText(@"./VhcleKnd.xml", VhcleKnd.ToString());//Api 불러온 정보 저장
+               // Console.WriteLine(VhcleKnd);
+                File.WriteAllText(@"./dg_xml/VhcleKnd.xml", VhcleKnd.ToString());//Api 불러온 정보 저장
 
                 System.Windows.Forms.MessageBox.Show(ex.Message);
                 System.Windows.Forms.MessageBox.Show(ex.StackTrace);
@@ -220,7 +222,8 @@ namespace donggyu_1023
 
             try
             {
-                results = File.ReadAllText(@"./TrainSttnList_"+cityName+".xml");
+               
+                results = File.ReadAllText(@"./dg_xml/TrainSttnList_" + cityName+".xml");
                 XElement TrainSttn = XElement.Parse(results);
                 Console.WriteLine("TrainSttnList.xml load 성공");
                 Console.WriteLine(TrainSttn);
@@ -254,7 +257,7 @@ namespace donggyu_1023
 
                 string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoTrainSttnList"; // URL
                 url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
-                url += "&numOfRows=10";
+                url += "&numOfRows=104";
                 url += "&pageNo=1";
                 url += "&cityCode=" + city;
 
@@ -271,8 +274,8 @@ namespace donggyu_1023
 
               
                 XElement TrainSttn = XElement.Parse(results);
-                File.WriteAllText(@"./TrainSttnList_" + cityName + ".xml",TrainSttn.ToString());
-                Console.WriteLine(TrainSttn);
+                File.WriteAllText(@"./dg_xml/TrainSttnList_" + cityName + ".xml",TrainSttn.ToString());
+                //Console.WriteLine(TrainSttn);
                 System.Windows.Forms.MessageBox.Show(ex.Message);
                 System.Windows.Forms.MessageBox.Show(ex.StackTrace);
 
@@ -289,9 +292,10 @@ namespace donggyu_1023
             TrainInfo.Clear();
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
             url += "?ServiceKey=" + "0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D"; // Service Key
+            url += "&numOfRows=104";
             url += "&depPlaceId=" + depPlaceId;
             url += "&arrPlaceId=" + arrPlaceId;
-            url += "&depPlandTime=" + "20210421";//DateTime.Now.ToString("yyyyMMdd");
+            url += "&depPlandTime=" + DateTime.Now.ToString("yyyyMMdd");
 
             if (gradeCode != "") 
             { 
@@ -316,26 +320,46 @@ namespace donggyu_1023
             {
 
                 string tmpTraingradename = item.Element("traingradename").Value;//차량종류명
-                string tmpDepplandtime = item.Element("depplandtime").Value.Substring(0, 14);//차량출발시간
-                string tmpArrplandtime = item.Element("arrplandtime").Value.Substring(0, 14);//도착시간
+                DateTime tmpDepplandtime = DateTime.ParseExact(item.Element("depplandtime").Value, "yyyyMMddHHmmss", null);//차량출발시간
+                DateTime tmpArrplandtime = DateTime.ParseExact(item.Element("arrplandtime").Value,"yyyyMMddHHmmss", null);//도착시간
                 string tmpDepplacename = item.Element("depplacename").Value;//출발지
                 string tmpArrplacename = item.Element("arrplacename").Value;//도착지
                 string tmpTrainno = item.Element("trainno").Value;//열차번호
                 string tmpNodename = item.Element("arrplacename").Value + "역";//도착지
-                Console.WriteLine(tmpDepplandtime);
+
+
+                //도착시간 구하는
+                string test = DateTime.Now.ToString("yyyyMMddHHmmss");
+                DateTime now = DateTime.ParseExact(test, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
+                TimeSpan timeSpan = tmpArrplandtime - now ;
+                int timeHoure = timeSpan.Hours;
+                int timeMinutes = timeSpan.Minutes;
+                Console.WriteLine("시간 :" + timeHoure + "/ 분:" + timeMinutes);
+
                 Train_D td = new Train_D()
                 {
                     traingradename = tmpTraingradename,
-                    depplandtime = DateTime.Parse(tmpDepplandtime).ToString("yyyy-MM-dd-HH:mm:ss"),
-                    arrplandtime = DateTime.Parse(tmpArrplandtime).ToString("yyyy-MM-dd-HH:mm:ss"),
+                    depplandtime = tmpDepplandtime.ToString().Substring(11,7),
+                    arrplandtime = tmpArrplandtime.ToString().Substring(11,7),
+                    // depplandtime = tmpDepplandtime.Substring(8, 2) + ":" + tmpDepplandtime.Substring(10, 2),
+                    //arrplandtime = tmpArrplandtime.Substring(8, 2) + ":" + tmpArrplandtime.Substring(10, 2),
                     depplacename = tmpDepplacename,
                     arrplacename = tmpArrplacename,
                     trainno = tmpTrainno,
-                    nodename = tmpNodename
+                    nodename = tmpNodename,
+                    outTime = (timeHoure * 60) + timeMinutes + "분"
                 };
+                if ((timeHoure * 60) + timeMinutes >= 0) 
+                {
+                    if ((timeHoure * 60) + timeMinutes == 0)
+                    {
+                        td.outTime = "도착";
+                    }
 
-                TrainInfo.Add(td);
-
+                    TrainInfo.Add(td);
+                }
+                //Console.WriteLine(ShowInfo);
+                File.WriteAllText(@"./dg_xml/ShowInfo[" + depPlaceId+"]["+ arrPlaceId + "]["+ DateTime.Now.ToString("yyyyMMdd") +"].xml", ShowInfo.ToString());
 
             }
             //확인용
@@ -347,10 +371,23 @@ namespace donggyu_1023
         }
 
 
-            #endregion api 정보호출
+        #endregion api 정보호출
+
+
+        public static void createDirectory()
+        {
+            DirectoryInfo di = new DirectoryInfo("dg_xml");
+            //if(di.Exists == false)
+            if (!di.Exists)
+            {
+                di.Create();//폴더 만들기
+            }
         }
 
 
+    }
+
+   
 
 
 }

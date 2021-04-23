@@ -37,16 +37,18 @@ namespace donggyu_1023
             this.label2 = new System.Windows.Forms.Label();
             this.trainComboStart = new System.Windows.Forms.ComboBox();
             this.infoClick = new System.Windows.Forms.Button();
+            this.trainDBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.trainDBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traingradenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrplacenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrplandtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nodenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trainnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.traingradenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainDBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainDBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,19 +57,19 @@ namespace donggyu_1023
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.time,
+            this.outTime,
+            this.traingradenameDataGridViewTextBoxColumn,
             this.arrplacenameDataGridViewTextBoxColumn,
             this.depplandtimeDataGridViewTextBoxColumn,
             this.arrplandtimeDataGridViewTextBoxColumn,
             this.arrplandtime,
             this.nodenameDataGridViewTextBoxColumn,
-            this.trainnoDataGridViewTextBoxColumn,
-            this.traingradenameDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.trainDBindingSource;
+            this.trainnoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.trainDBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 69);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 369);
+            this.dataGridView1.Size = new System.Drawing.Size(1194, 457);
             this.dataGridView1.TabIndex = 1;
             // 
             // trainComboEnd
@@ -128,15 +130,25 @@ namespace donggyu_1023
             this.infoClick.UseVisualStyleBackColor = true;
             this.infoClick.Click += new System.EventHandler(this.infoClick_Click);
             // 
+            // trainDBindingSource1
+            // 
+            this.trainDBindingSource1.DataSource = typeof(donggyu_1023.Data.Train_D);
+            // 
             // trainDBindingSource
             // 
             this.trainDBindingSource.DataSource = typeof(donggyu_1023.Data.Train_D);
             // 
-            // time
+            // outTime
             // 
-            this.time.HeaderText = "도착 남은 시간";
-            this.time.Name = "time";
-            this.time.Width = 120;
+            this.outTime.DataPropertyName = "outTime";
+            this.outTime.HeaderText = "도착남은시간";
+            this.outTime.Name = "outTime";
+            // 
+            // traingradenameDataGridViewTextBoxColumn
+            // 
+            this.traingradenameDataGridViewTextBoxColumn.DataPropertyName = "traingradename";
+            this.traingradenameDataGridViewTextBoxColumn.HeaderText = "차량종류";
+            this.traingradenameDataGridViewTextBoxColumn.Name = "traingradenameDataGridViewTextBoxColumn";
             // 
             // arrplacenameDataGridViewTextBoxColumn
             // 
@@ -174,17 +186,11 @@ namespace donggyu_1023
             this.trainnoDataGridViewTextBoxColumn.HeaderText = "열차번호";
             this.trainnoDataGridViewTextBoxColumn.Name = "trainnoDataGridViewTextBoxColumn";
             // 
-            // traingradenameDataGridViewTextBoxColumn
-            // 
-            this.traingradenameDataGridViewTextBoxColumn.DataPropertyName = "traingradename";
-            this.traingradenameDataGridViewTextBoxColumn.HeaderText = "차량종류";
-            this.traingradenameDataGridViewTextBoxColumn.Name = "traingradenameDataGridViewTextBoxColumn";
-            // 
             // InfoView_D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 452);
+            this.ClientSize = new System.Drawing.Size(1218, 555);
             this.Controls.Add(this.infoClick);
             this.Controls.Add(this.trainComboStart);
             this.Controls.Add(this.label2);
@@ -196,6 +202,7 @@ namespace donggyu_1023
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InfoView_D";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainDBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainDBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -212,13 +219,14 @@ namespace donggyu_1023
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox trainComboStart;
         private System.Windows.Forms.Button infoClick;
-        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.BindingSource trainDBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traingradenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn arrplacenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn depplandtimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn arrplandtimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn arrplandtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn trainnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn traingradenameDataGridViewTextBoxColumn;
     }
 }
