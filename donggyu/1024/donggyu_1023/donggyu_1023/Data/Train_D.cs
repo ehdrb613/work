@@ -15,7 +15,7 @@ namespace donggyu_1023.Data
         public string nodename { set; get; }//기차역명
         public string vehiclekndid { set; get; }//차량종류코드
         public string vehiclekndnm { set; get; }//차량종류명
-
+      
         public string traingradename { set; get; } //차량종류명
         public string depplandtime { set; get; } //차량출발시간
         public string arrplandtime { set; get; } //도착시간
@@ -25,6 +25,6 @@ namespace donggyu_1023.Data
         public string trainno { set; get; } //열차번호
 
         public string outTime { set; get; } //도착시간
-
+        public int timeCheck { set; get; } //정렬용
     }
 }
