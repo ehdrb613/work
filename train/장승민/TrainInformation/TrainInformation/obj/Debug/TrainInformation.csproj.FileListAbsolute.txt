@@ -8,7 +8,6 @@ D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\Tra
 D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csproj.CoreCompileInputs.cache
 D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.exe
 D:\Juan\Juann\02_portfolio\train\TrainInformation\TrainInformation\obj\Debug\TrainInformation.pdb
-D:\Juan\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csprojAssemblyReference.cache
 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.Form1.resources
 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.Properties.Resources.resources
 D:\Juan\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csproj.GenerateResource.cache
@@ -28,3 +27,4 @@ D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\Tr
 D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe.config
 D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.exe
 D:\GitFolder\work\train\장승민\TrainInformation\TrainInformation\bin\Debug\TrainInformation.pdb
+D:\Juan\work\train\장승민\TrainInformation\TrainInformation\obj\Debug\TrainInformation.csprojAssemblyReference.cache

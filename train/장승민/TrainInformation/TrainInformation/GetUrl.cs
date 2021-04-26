@@ -66,22 +66,89 @@ namespace TrainInformation
             st.Clear();
             foreach (var item in request(url).Descendants("item"))
             {
+                // 현재 시간 부터 출발 시간 까지 남은 시간
+                long remainTimeDay = long.Parse(item.Element("depplandtime").Value.Substring(6, 2)) - long.Parse(DateTime.Now.ToString("dd"));
                 long remainTimeHour = long.Parse(item.Element("depplandtime").Value.Substring(8, 2)) - long.Parse(DateTime.Now.ToString("HH"));
                 long remainTimeMin = long.Parse(item.Element("depplandtime").Value.Substring(10, 2)) - long.Parse(DateTime.Now.ToString("mm"));
-                if (remainTimeMin < 0)
-                {
-                    remainTimeHour--;
-                    remainTimeMin += 60;
-                }
                 String remainTime;
-                if (remainTimeHour != 0)
+                if (remainTimeDay == 0)
                 {
-                    remainTime = remainTimeHour + " 시간 " + remainTimeMin + " 분";
+                    if (remainTimeMin < 0)
+                    {
+                        remainTimeHour--;
+                        remainTimeMin += 60;
+                    }
+                    if (remainTimeHour != 0)
+                    {
+                        remainTime = remainTimeHour + " 시간 " + remainTimeMin + " 분";
+                    }
+                    else
+                    {
+                        remainTime = remainTimeMin + " 분";
+                    }
                 }
                 else
                 {
-                    remainTime = remainTimeMin + " 분";
+                    if (remainTimeDay == 0)
+                    {
+                        if (remainTimeMin < 0)
+                        {
+                            remainTimeHour--;
+                            remainTimeMin += 60;
+                        }
+                        if (remainTimeHour != 0)
+                        {
+                            remainTime = remainTimeHour + " 시간 " + remainTimeMin + " 분";
+                        }
+                        else
+                        {
+                            remainTime = remainTimeMin + " 분";
+                        }
+                    }
+                    else
+                    {
+                            remainTimeHour += remainTimeDay * 24;
+
+                        if (remainTimeMin < 0)
+                        {
+                            remainTimeHour--;
+                            remainTimeMin += 60;
+                        }
+                        if (remainTimeHour != 0)
+                        {
+                            remainTime = remainTimeHour + " 시간 " + remainTimeMin + " 분";
+                        }
+                        else
+                        {
+                            remainTime = remainTimeMin + " 분";
+                        }
+                    }
                 }
+
+
+                // 소요 시간 (도착 시간 - 출발 시간)
+                long durationHour = long.Parse(item.Element("arrplandtime").Value.Substring(8, 2)) - long.Parse(item.Element("depplandtime").Value.Substring(8, 2));
+                long durationMin = long.Parse(item.Element("arrplandtime").Value.Substring(10, 2)) - long.Parse(item.Element("depplandtime").Value.Substring(10, 2));
+                if (durationMin < 0)
+                {
+                    durationHour--;
+                    durationMin += 60;
+                }
+                if (durationHour < 0)
+                {
+                    durationHour += 24;
+                }
+                String duration;
+                if (durationHour != 0)
+                {
+                    duration = durationHour + " 시간 " + durationMin + " 분";
+                }
+
+                else
+                {
+                    duration = durationMin + " 분";
+                }
+
                 string tempAdultcharge = item.Element("adultcharge").Value;
                 string tempArrplacename = item.Element("arrplacename").Value;
                 string tempArrplandtime = item.Element("arrplandtime").Value.Substring(8, 2) + " : " + item.Element("arrplandtime").Value.Substring(10, 2);
@@ -89,7 +156,7 @@ namespace TrainInformation
                 string tempDepplandtime = item.Element("depplandtime").Value.Substring(8, 2) + " : " + item.Element("depplandtime").Value.Substring(10, 2);
                 string tempTraingradename = item.Element("traingradename").Value;
                 string tempTrainno = item.Element("trainno").Value;
-
+                string tempDuration = duration;
                 if (trainName[0] == "all" || trainName[1] == "all")
                 {
                     if (long.Parse(item.Element("depplandtime").Value) >= long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")))
@@ -102,7 +169,9 @@ namespace TrainInformation
                             depplacename = tempDepplacename,
                             depplandtime = tempDepplandtime,
                             traingradename = tempTraingradename,
-                            trainno = tempTrainno
+                            trainno = tempTrainno,
+                            duration = tempDuration
+
                         };
                         st.Add(tempSearchTrain);
                     }
@@ -116,13 +185,14 @@ namespace TrainInformation
                         {
                             SearchTrain tempSearchTrain = new SearchTrain()
                             {
-                                adultcharge = remainTimeHour + " : " + remainTimeMin,
+                                adultcharge = remainTime,
                                 arrplacename = tempArrplacename,
                                 arrplandtime = tempArrplandtime,
                                 depplacename = tempDepplacename,
                                 depplandtime = tempDepplandtime,
                                 traingradename = tempTraingradename,
-                                trainno = tempTrainno
+                                trainno = tempTrainno,
+                                duration = tempDuration
                             };
                             st.Add(tempSearchTrain);
                         }

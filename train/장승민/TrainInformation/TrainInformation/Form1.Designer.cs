@@ -30,6 +30,9 @@ namespace TrainInformation
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_Dept = new System.Windows.Forms.TextBox();
@@ -52,6 +55,8 @@ namespace TrainInformation
             this.whatTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.searchTrainBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.getUrlBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adultchargeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplacenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +64,7 @@ namespace TrainInformation
             this.arrplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traingradenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trainnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchTrainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.getUrlBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -75,7 +79,7 @@ namespace TrainInformation
             this.label1.Location = new System.Drawing.Point(272, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 99;
             this.label1.Text = "출발역";
             // 
             // label2
@@ -100,6 +104,8 @@ namespace TrainInformation
             // 
             // textBox_Arrive
             // 
+            this.textBox_Arrive.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox_Arrive.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBox_Arrive.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.textBox_Arrive.Location = new System.Drawing.Point(322, 110);
             this.textBox_Arrive.Name = "textBox_Arrive";
@@ -112,13 +118,28 @@ namespace TrainInformation
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(12, 243);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(796, 332);
+            this.groupBox1.Size = new System.Drawing.Size(849, 332);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(241)))), ((int)(((byte)(244)))));
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(160)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.adultchargeDataGridViewTextBoxColumn,
@@ -127,34 +148,48 @@ namespace TrainInformation
             this.arrplacenameDataGridViewTextBoxColumn,
             this.arrplandtimeDataGridViewTextBoxColumn,
             this.traingradenameDataGridViewTextBoxColumn,
-            this.trainnoDataGridViewTextBoxColumn});
+            this.trainnoDataGridViewTextBoxColumn,
+            this.duration});
             this.dataGridView1.DataSource = this.searchTrainBindingSource;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(160)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(790, 312);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Size = new System.Drawing.Size(843, 312);
+            this.dataGridView1.TabIndex = 20;
             // 
             // btn_change_dept_arrive
             // 
+            this.btn_change_dept_arrive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(116)))), ((int)(((byte)(212)))));
+            this.btn_change_dept_arrive.ForeColor = System.Drawing.Color.White;
             this.btn_change_dept_arrive.Location = new System.Drawing.Point(351, 81);
             this.btn_change_dept_arrive.Name = "btn_change_dept_arrive";
             this.btn_change_dept_arrive.Size = new System.Drawing.Size(46, 23);
             this.btn_change_dept_arrive.TabIndex = 5;
             this.btn_change_dept_arrive.Text = "↕";
-            this.btn_change_dept_arrive.UseVisualStyleBackColor = true;
+            this.btn_change_dept_arrive.UseVisualStyleBackColor = false;
             this.btn_change_dept_arrive.Click += new System.EventHandler(this.btn_change_dept_arrive_Click);
             // 
             // btn_search_train
             // 
+            this.btn_search_train.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(116)))), ((int)(((byte)(212)))));
+            this.btn_search_train.ForeColor = System.Drawing.Color.White;
             this.btn_search_train.Location = new System.Drawing.Point(442, 54);
             this.btn_search_train.Name = "btn_search_train";
             this.btn_search_train.Size = new System.Drawing.Size(75, 76);
-            this.btn_search_train.TabIndex = 6;
+            this.btn_search_train.TabIndex = 4;
             this.btn_search_train.Text = "조회";
-            this.btn_search_train.UseVisualStyleBackColor = true;
+            this.btn_search_train.UseVisualStyleBackColor = false;
             this.btn_search_train.Click += new System.EventHandler(this.btn_search_train_Click);
             // 
             // label3
@@ -171,13 +206,13 @@ namespace TrainInformation
             this.textBox_dept_date.Location = new System.Drawing.Point(68, 25);
             this.textBox_dept_date.Name = "textBox_dept_date";
             this.textBox_dept_date.Size = new System.Drawing.Size(100, 21);
-            this.textBox_dept_date.TabIndex = 8;
+            this.textBox_dept_date.TabIndex = 99;
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(15, 58);
             this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 13;
+            this.monthCalendar1.TabIndex = 1;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // groupBox2
@@ -266,9 +301,9 @@ namespace TrainInformation
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.whatTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 565);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 583);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(833, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(875, 22);
             this.statusStrip1.TabIndex = 15;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -290,6 +325,14 @@ namespace TrainInformation
             this.timer2.Interval = 60000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // searchTrainBindingSource
+            // 
+            this.searchTrainBindingSource.DataSource = typeof(TrainInformation.SearchTrain);
+            // 
+            // getUrlBindingSource
+            // 
+            this.getUrlBindingSource.DataSource = typeof(TrainInformation.GetUrl);
+            // 
             // adultchargeDataGridViewTextBoxColumn
             // 
             this.adultchargeDataGridViewTextBoxColumn.DataPropertyName = "adultcharge";
@@ -297,6 +340,7 @@ namespace TrainInformation
             this.adultchargeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.adultchargeDataGridViewTextBoxColumn.Name = "adultchargeDataGridViewTextBoxColumn";
             this.adultchargeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.adultchargeDataGridViewTextBoxColumn.Width = 110;
             // 
             // depplacenameDataGridViewTextBoxColumn
             // 
@@ -305,7 +349,6 @@ namespace TrainInformation
             this.depplacenameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.depplacenameDataGridViewTextBoxColumn.Name = "depplacenameDataGridViewTextBoxColumn";
             this.depplacenameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.depplacenameDataGridViewTextBoxColumn.Width = 90;
             // 
             // depplandtimeDataGridViewTextBoxColumn
             // 
@@ -314,6 +357,7 @@ namespace TrainInformation
             this.depplandtimeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.depplandtimeDataGridViewTextBoxColumn.Name = "depplandtimeDataGridViewTextBoxColumn";
             this.depplandtimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.depplandtimeDataGridViewTextBoxColumn.Width = 110;
             // 
             // arrplacenameDataGridViewTextBoxColumn
             // 
@@ -330,6 +374,7 @@ namespace TrainInformation
             this.arrplandtimeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.arrplandtimeDataGridViewTextBoxColumn.Name = "arrplandtimeDataGridViewTextBoxColumn";
             this.arrplandtimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.arrplandtimeDataGridViewTextBoxColumn.Width = 110;
             // 
             // traingradenameDataGridViewTextBoxColumn
             // 
@@ -347,19 +392,19 @@ namespace TrainInformation
             this.trainnoDataGridViewTextBoxColumn.Name = "trainnoDataGridViewTextBoxColumn";
             this.trainnoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // searchTrainBindingSource
+            // duration
             // 
-            this.searchTrainBindingSource.DataSource = typeof(TrainInformation.SearchTrain);
-            // 
-            // getUrlBindingSource
-            // 
-            this.getUrlBindingSource.DataSource = typeof(TrainInformation.GetUrl);
+            this.duration.DataPropertyName = "duration";
+            this.duration.HeaderText = "소요 시간";
+            this.duration.Name = "duration";
+            this.duration.Width = 110;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 587);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(241)))), ((int)(((byte)(244)))));
+            this.ClientSize = new System.Drawing.Size(875, 605);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.monthCalendar1);
@@ -412,6 +457,7 @@ namespace TrainInformation
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel whatTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.DataGridViewTextBoxColumn adultchargeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn depplacenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn depplandtimeDataGridViewTextBoxColumn;
@@ -419,7 +465,7 @@ namespace TrainInformation
         private System.Windows.Forms.DataGridViewTextBoxColumn arrplandtimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn traingradenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn trainnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn duration;
     }
 }
 

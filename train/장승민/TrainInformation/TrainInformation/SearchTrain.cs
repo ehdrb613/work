@@ -16,6 +16,7 @@ namespace TrainInformation
         
         public string traingradename { get; set; }
         public string trainno { get; set; }
+        public string duration { get; set; }
 
     }
 }
