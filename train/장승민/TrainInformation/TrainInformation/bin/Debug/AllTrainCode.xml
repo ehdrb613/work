@@ -45,6 +45,10 @@
         <nodename>광운대</nodename>
     </item>
     <item>
+        <nodeid>NATH30000</nodeid>
+        <nodename>수서</nodename>
+    </item>
+    <item>
         <nodeid>NAT011403</nodeid>
         <nodename>부강</nodename>
     </item>
