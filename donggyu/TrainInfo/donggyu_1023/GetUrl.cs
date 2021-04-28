@@ -46,6 +46,7 @@ namespace TrainInfo
             XElement resultsXElement = XElement.Parse(results);
             return resultsXElement;
         }
+
         public static List<SearchTrain> st = new List<SearchTrain>();
 
 
@@ -53,15 +54,11 @@ namespace TrainInfo
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
-            //url += "?ServiceKey=0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D";
             url += "&numOfRows=500";
             url += "&pageNo=1";
             url += "&depPlaceId=" + depPlaceId;
             url += "&arrPlaceId=" + arrPlaceId;
             url += "&depPlandTime=" + date;
-
-
-            //Console.WriteLine(request(url));
 
             st.Clear();
             foreach (var item in request(url).Descendants("item"))
@@ -208,7 +205,6 @@ namespace TrainInfo
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyCodeList"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
-            //url += "?ServiceKey=0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D";
 
             Dictionary<string, string> city = new Dictionary<string, string>();
 
@@ -220,11 +216,11 @@ namespace TrainInfo
             return city;
 
         }
+
         public Dictionary<string, string> getCtyAcctoTrainSttnList(string cityCode)
         {
             string url = "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoTrainSttnList"; // URL
             url += "?ServiceKey=gsClkYQY5L7abfYL7oyicjcCbDBXKny%2BiAx8pSuSBvevP%2B9XASascNCaoWJz%2F89mmb%2BHM53e2xibO743Dr%2BVVQ%3D%3D"; // Service Key
-            //url += "?ServiceKey=0IL6R0F8vitdpbkttdCEX3Uxse07CQ1RRK3plz%2BdAkBSYkIESNMfTtVmQk%2BPUDXLPQfvB3iGXJYvPOS2brP4gQ%3D%3D";
             url += "&numOfRows=200";
             url += "&pageNo=1";
             url += "&cityCode=" + cityCode;
@@ -235,7 +231,7 @@ namespace TrainInfo
             {
                 node.Add(item.Element("nodeid").Value, item.Element("nodename").Value);
             }
-
+            
             return node;
 
         }
