@@ -29,50 +29,86 @@ namespace TrainInfo
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
+            this.components = new System.ComponentModel.Container();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBoxIpl1 = new OpenCvSharp.UserInterface.PictureBoxIpl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIpl1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // button3
             // 
-            this.button1.Location = new System.Drawing.Point(530, 280);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 105);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "도착정보";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button3.FlatAppearance.BorderSize = 2;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button3.Location = new System.Drawing.Point(602, 47);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(140, 139);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "열 차 조 회";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // videoSourcePlayer1
+            // button2
             // 
-            this.videoSourcePlayer1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.videoSourcePlayer1.Location = new System.Drawing.Point(0, 0);
-            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
-            this.videoSourcePlayer1.Size = new System.Drawing.Size(352, 450);
-            this.videoSourcePlayer1.TabIndex = 2;
-            this.videoSourcePlayer1.Text = "videoSourcePlayer1";
-            this.videoSourcePlayer1.VideoSource = null;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button2.Location = new System.Drawing.Point(602, 234);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 139);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "도 착 정 보";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // pictureBoxIpl1
+            // 
+            this.pictureBoxIpl1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.pictureBoxIpl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxIpl1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxIpl1.Name = "pictureBoxIpl1";
+            this.pictureBoxIpl1.Size = new System.Drawing.Size(521, 441);
+            this.pictureBoxIpl1.TabIndex = 8;
+            this.pictureBoxIpl1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 33;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(241)))), ((int)(((byte)(244)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.videoSourcePlayer1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(800, 441);
+            this.Controls.Add(this.pictureBoxIpl1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIpl1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private OpenCvSharp.UserInterface.PictureBoxIpl pictureBoxIpl1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
