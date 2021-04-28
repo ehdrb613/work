@@ -51,6 +51,7 @@ namespace TrainInfo
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 139);
             this.button1.TabIndex = 5;
+            this.button1.TabStop = false;
             this.button1.Text = "대구";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -67,6 +68,7 @@ namespace TrainInfo
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 139);
             this.button2.TabIndex = 1;
+            this.button2.TabStop = false;
             this.button2.Text = "전체";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -83,6 +85,7 @@ namespace TrainInfo
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 139);
             this.button3.TabIndex = 2;
+            this.button3.TabStop = false;
             this.button3.Text = "서울";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -99,6 +102,7 @@ namespace TrainInfo
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(140, 139);
             this.button4.TabIndex = 6;
+            this.button4.TabStop = false;
             this.button4.Text = "부산";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -115,6 +119,7 @@ namespace TrainInfo
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(140, 139);
             this.button5.TabIndex = 3;
+            this.button5.TabStop = false;
             this.button5.Text = "대전";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -131,6 +136,7 @@ namespace TrainInfo
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(140, 139);
             this.button6.TabIndex = 8;
+            this.button6.TabStop = false;
             this.button6.Text = "광주";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -147,6 +153,7 @@ namespace TrainInfo
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(140, 139);
             this.button7.TabIndex = 7;
+            this.button7.TabStop = false;
             this.button7.Text = "울산";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -163,6 +170,7 @@ namespace TrainInfo
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(140, 139);
             this.button8.TabIndex = 4;
+            this.button8.TabStop = false;
             this.button8.Text = "인천";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);

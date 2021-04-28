@@ -104,7 +104,7 @@
     <Compile Include="InfoSearch.designer.cs">
       <DependentUpon>InfoSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="GetUrl.cs" />
+    <Compile Include="Data\GetUrl.cs" />
     <Compile Include="InfoView_D.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -49,6 +49,7 @@ namespace TrainInfo
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 139);
             this.button3.TabIndex = 6;
+            this.button3.TabStop = false;
             this.button3.Text = "열 차 조 회";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -65,6 +66,7 @@ namespace TrainInfo
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 139);
             this.button2.TabIndex = 7;
+            this.button2.TabStop = false;
             this.button2.Text = "도 착 정 보";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);

@@ -84,11 +84,12 @@ namespace TrainInfo
                             Console.WriteLine(nodeidStart);
                         }
                     }
-                    //데이터 출력하기위해 API 데이터 불러옴 오늘은 여기까지
+                    //데이터 출력하기위해 API 데이터 불러옴
                     DataManager_D.ShowInfo(nodeidStart, nodeidEnd, selectTrain());
 
                     dataGridView1.DataSource= null;
                     dataGridView1.DataSource = DataManager_D.TrainInfo;
+                    arrPlaceLabel.Text = trainComboEnd.Text + "역 도착정보";
 
                     if (dataGridView1.RowCount == 0)//도착정보가 없을때 메세지
                     {

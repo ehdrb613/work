@@ -44,7 +44,21 @@ namespace TrainInfo
             {
                 timer1.Enabled = false;
             }
+            /*
+            VideoCapture capture = new VideoCapture(VideoPath);
+            Mat frame = new Mat();
 
+            while (true)
+            {
+                if (capture.PosFrames == capture.FrameCount) capture.Open(VideoPath);
+
+                capture.Read(frame);
+                Cv2.NamedWindow(VideoWindowName, WindowMode.AutoSize);
+                Cv2.ImShow(VideoWindowName, frame);
+
+                if (Cv2.WaitKey(33) == 'q') break; // q 키를 누르면 종료.
+            }
+            */
             /* while (true)
               {
                   test.Read(frame);
@@ -76,12 +90,14 @@ namespace TrainInfo
         private void timer1_Tick(object sender, EventArgs e)
         {
             
-           /* video.Read(frame);
+            video.Read(frame);
+            if (video.PosFrames == video.FrameCount)
+                video.Open(@"home.mp4");
+
             Cv2.Resize(frame, frame, new OpenCvSharp.CPlusPlus.Size(frame.Width * 1 / 2, frame.Height * 1 / 2));
 
-           
-           
-            pictureBoxIpl1.ImageIpl = frame.ToIplImage();*/
+            pictureBoxIpl1.ImageIpl = frame.ToIplImage();
+            
 
         }//ToIplImage
 
