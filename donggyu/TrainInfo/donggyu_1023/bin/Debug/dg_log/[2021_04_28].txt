@@ -115,3 +115,6 @@
    위치: System.Collections.Generic.List`1.get_Item(Int32 index)
    위치: TrainInfo.DataManager_D.ShowInfo(String depPlaceId, String arrPlaceId, List`1 gradeCode) 파일 D:\DG\work\donggyu\TrainInfo\donggyu_1023\Data\DataManager_D.cs:줄 439
 [2021-04-28 16:40:28]도착정보가 없습니다.
+[2021-04-28 16:45:57]대구 선택함
+[2021-04-28 16:46:00]조회 클릭
+[2021-04-28 16:46:00]출발역:서울_도착역:대구
