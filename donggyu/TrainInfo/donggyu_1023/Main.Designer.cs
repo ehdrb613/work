@@ -45,7 +45,7 @@ namespace TrainInfo
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
-            this.button3.Location = new System.Drawing.Point(602, 47);
+            this.button3.Location = new System.Drawing.Point(441, 221);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 139);
             this.button3.TabIndex = 6;
@@ -62,7 +62,7 @@ namespace TrainInfo
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(602, 234);
+            this.button2.Location = new System.Drawing.Point(622, 221);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 139);
             this.button2.TabIndex = 7;
@@ -77,7 +77,7 @@ namespace TrainInfo
             this.pictureBoxIpl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxIpl1.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxIpl1.Name = "pictureBoxIpl1";
-            this.pictureBoxIpl1.Size = new System.Drawing.Size(521, 441);
+            this.pictureBoxIpl1.Size = new System.Drawing.Size(400, 400);
             this.pictureBoxIpl1.TabIndex = 8;
             this.pictureBoxIpl1.TabStop = false;
             // 
@@ -92,7 +92,7 @@ namespace TrainInfo
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(241)))), ((int)(((byte)(244)))));
-            this.ClientSize = new System.Drawing.Size(800, 441);
+            this.ClientSize = new System.Drawing.Size(800, 400);
             this.Controls.Add(this.pictureBoxIpl1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
