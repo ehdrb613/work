@@ -13,7 +13,7 @@ using System.Drawing;
 using OpenCvSharp;
 using OpenCvSharp.CPlusPlus;
 using OpenCvSharp.Extensions;
-
+using System.Threading;
 
 namespace TrainInfo
 {
@@ -38,7 +38,7 @@ namespace TrainInfo
            
             try
             {
-                video = new VideoCapture(@"home.mp4");
+                video = new VideoCapture(@"home3.mp4");
             }
             catch
             {
@@ -87,15 +87,22 @@ namespace TrainInfo
             ai.ShowDialog();
         }
 
+        //기차 영상 출력
         private void timer1_Tick(object sender, EventArgs e)
         {
             
             video.Read(frame);
-            if (video.PosFrames == video.FrameCount)
-                video.Open(@"home.mp4");
+            if (video.PosFrames == video.FrameCount) 
+                video.Open(@"home3.mp4");
 
-            Cv2.Resize(frame, frame, new OpenCvSharp.CPlusPlus.Size(frame.Width * 1 / 2, frame.Height * 1 / 2));
-
+            if (video.PosFrames < (video.FrameCount / 2)*1.2) { 
+                if(timer1.Interval>10)
+                    timer1.Interval -= 1;
+            }
+            else { 
+                if(timer1.Interval<40)
+                    timer1.Interval += 1;
+            }
             pictureBoxIpl1.ImageIpl = frame.ToIplImage();
             
 
