@@ -27,15 +27,15 @@ namespace TrainInfo
             InitializeComponent();
 
         }
+
+        //opencvsharp
         VideoCapture video;
         Mat frame = new Mat();
         
 
         private void Main_Load(object sender, EventArgs e)
         {
-
-
-           
+            //영상 출력 opencvsharp
             try
             {
                 video = new VideoCapture(@"home3.mp4");
@@ -44,34 +44,7 @@ namespace TrainInfo
             {
                 timer1.Enabled = false;
             }
-            /*
-            VideoCapture capture = new VideoCapture(VideoPath);
-            Mat frame = new Mat();
-
-            while (true)
-            {
-                if (capture.PosFrames == capture.FrameCount) capture.Open(VideoPath);
-
-                capture.Read(frame);
-                Cv2.NamedWindow(VideoWindowName, WindowMode.AutoSize);
-                Cv2.ImShow(VideoWindowName, frame);
-
-                if (Cv2.WaitKey(33) == 'q') break; // q 키를 누르면 종료.
-            }
-            */
-            /* while (true)
-              {
-                  test.Read(frame);
-                  if (!frame.Empty())
-                  {
-                      Cv2.Resize(frame, frame, new Size(frame.Width * 1 / 2, frame.Height * 1 / 2));
-                      Cv2.ImShow("test", frame);
-                      Cv2.WaitKey(33);
-                  }
-                  else break;
-              }
-              frame.Release(); Cv2.DestroyAllWindows(); //Cv2.DestroyWindow("test");*/
-
+         
         }
 
 

@@ -306,7 +306,7 @@ namespace TrainInfo
                 //도착시간 구하는
                 string test = DateTime.Now.ToString("yyyyMMddHHmmss");
                 DateTime now = DateTime.ParseExact(test, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
-                TimeSpan timeSpan = tmpArrplandtime - now ;
+                TimeSpan timeSpan = tmpArrplandtime - now ; //
                 int timeHoure = timeSpan.Hours;
                 int timeMinutes = timeSpan.Minutes;
                 Console.WriteLine("시간 :" + item.Element("arrplandtime"));

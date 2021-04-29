@@ -39,6 +39,7 @@ namespace TrainInfo
             this.textBox_Arrive = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.searchTrainBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.getUrlBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchTrainBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_change_dept_arrive = new System.Windows.Forms.Button();
@@ -65,14 +66,13 @@ namespace TrainInfo
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.durationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchTrainBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getUrlBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -169,6 +169,10 @@ namespace TrainInfo
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(843, 312);
             this.dataGridView1.TabIndex = 20;
+            // 
+            // searchTrainBindingSource1
+            // 
+            this.searchTrainBindingSource1.DataSource = typeof(TrainInfo.SearchTrain);
             // 
             // btn_change_dept_arrive
             // 
@@ -338,6 +342,7 @@ namespace TrainInfo
             this.dataGridViewTextBoxColumn2.DataPropertyName = "depplacename";
             this.dataGridViewTextBoxColumn2.HeaderText = "출발 역";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 95;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -351,6 +356,7 @@ namespace TrainInfo
             this.dataGridViewTextBoxColumn4.DataPropertyName = "arrplacename";
             this.dataGridViewTextBoxColumn4.HeaderText = "도착 역";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 95;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -378,10 +384,6 @@ namespace TrainInfo
             this.durationDataGridViewTextBoxColumn.Name = "durationDataGridViewTextBoxColumn";
             this.durationDataGridViewTextBoxColumn.Width = 110;
             // 
-            // searchTrainBindingSource1
-            // 
-            this.searchTrainBindingSource1.DataSource = typeof(TrainInfo.SearchTrain);
-            // 
             // InfoSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -405,13 +407,13 @@ namespace TrainInfo
             this.Text = "열차 조회";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getUrlBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
