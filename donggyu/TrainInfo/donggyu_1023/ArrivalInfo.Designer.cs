@@ -46,7 +46,7 @@ namespace TrainInfo
             this.button1.FlatAppearance.BorderSize = 2;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button1.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(63, 242);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 139);
@@ -63,7 +63,7 @@ namespace TrainInfo
             this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button2.Location = new System.Drawing.Point(63, 52);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 139);
@@ -80,7 +80,7 @@ namespace TrainInfo
             this.button3.FlatAppearance.BorderSize = 2;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button3.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button3.Location = new System.Drawing.Point(243, 52);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 139);
@@ -97,7 +97,7 @@ namespace TrainInfo
             this.button4.FlatAppearance.BorderSize = 2;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button4.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button4.Location = new System.Drawing.Point(243, 242);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(140, 139);
@@ -114,7 +114,7 @@ namespace TrainInfo
             this.button5.FlatAppearance.BorderSize = 2;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button5.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button5.Location = new System.Drawing.Point(603, 52);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(140, 139);
@@ -131,7 +131,7 @@ namespace TrainInfo
             this.button6.FlatAppearance.BorderSize = 2;
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button6.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button6.Location = new System.Drawing.Point(603, 242);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(140, 139);
@@ -148,7 +148,7 @@ namespace TrainInfo
             this.button7.FlatAppearance.BorderSize = 2;
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button7.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button7.Location = new System.Drawing.Point(423, 242);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(140, 139);
@@ -165,7 +165,7 @@ namespace TrainInfo
             this.button8.FlatAppearance.BorderSize = 2;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold);
+            this.button8.Font = new System.Drawing.Font("나눔고딕", 30F, System.Drawing.FontStyle.Bold);
             this.button8.Location = new System.Drawing.Point(423, 52);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(140, 139);
