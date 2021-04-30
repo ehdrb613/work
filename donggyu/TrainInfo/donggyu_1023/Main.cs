@@ -25,14 +25,11 @@ namespace TrainInfo
         public Main()
         {
             InitializeComponent();
-
+            
         }
 
-        //opencvsharp
         VideoCapture video;
         Mat frame = new Mat();
-        
-
         private void Main_Load(object sender, EventArgs e)
         {
             //영상 출력 opencvsharp
@@ -44,9 +41,30 @@ namespace TrainInfo
             {
                 timer1.Enabled = false;
             }
-         
         }
+        //기차영상 tick 출력
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            video.Read(frame);
+            if (video.PosFrames == video.FrameCount) //마지막 프레임일때
+                video.Open(@"home3.mp4");//다시 실행
+            //속도 조절
+            if (video.PosFrames < (video.FrameCount / 2)*1.2) { 
+                if(timer1.Interval>10)
+                    timer1.Interval -= 1;
+            }
+            
+            else { 
+                if(timer1.Interval<40)
+                    timer1.Interval += 1;
+            }
+            pictureBoxIpl1.ImageIpl = frame.ToIplImage();
+        }//ToIplImage
 
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frame.Dispose();
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -60,30 +78,30 @@ namespace TrainInfo
             ai.ShowDialog();
         }
 
-        //기차 영상 출력
-        private void timer1_Tick(object sender, EventArgs e)
+        private void button3_MouseHover(object sender, EventArgs e)
         {
             
-            video.Read(frame);
-            if (video.PosFrames == video.FrameCount) 
-                video.Open(@"home3.mp4");
+            button3.ForeColor = Color.FromArgb(150, 210, 255);
+            pictureBox2.Load(@"img/line2.png");
 
-            if (video.PosFrames < (video.FrameCount / 2)*1.2) { 
-                if(timer1.Interval>10)
-                    timer1.Interval -= 1;
-            }
-            else { 
-                if(timer1.Interval<40)
-                    timer1.Interval += 1;
-            }
-            pictureBoxIpl1.ImageIpl = frame.ToIplImage();
-            
+        }
 
-        }//ToIplImage
-
-        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        private void button3_MouseLeave(object sender, EventArgs e)
         {
-            frame.Dispose();
+            button3.ForeColor = Color.FromArgb(0, 0, 0);
+            pictureBox2.Load(@"img/line.png");
+        }
+
+        private void button2_MouseHover(object sender, EventArgs e)
+        {
+            button2.ForeColor = Color.FromArgb(150, 210, 255);
+            pictureBox3.Load(@"img/line2.png");
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.ForeColor = Color.FromArgb(0, 0, 0);
+            pictureBox3.Load(@"img/line.png");
         }
     }
 }

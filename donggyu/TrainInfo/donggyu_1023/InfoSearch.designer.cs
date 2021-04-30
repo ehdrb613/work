@@ -39,7 +39,6 @@ namespace TrainInfo
             this.textBox_Arrive = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.searchTrainBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.getUrlBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchTrainBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btn_change_dept_arrive = new System.Windows.Forms.Button();
@@ -66,30 +65,33 @@ namespace TrainInfo
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.durationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchTrainBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.getUrlBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(272, 62);
+            this.label1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(272, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 99;
             this.label1.Text = "출발역";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(272, 118);
+            this.label2.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(272, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "도착역";
             // 
@@ -136,7 +138,7 @@ namespace TrainInfo
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(160)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -155,7 +157,7 @@ namespace TrainInfo
             this.dataGridView1.DataSource = this.searchTrainBindingSource1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(160)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -169,10 +171,6 @@ namespace TrainInfo
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(843, 312);
             this.dataGridView1.TabIndex = 20;
-            // 
-            // searchTrainBindingSource1
-            // 
-            this.searchTrainBindingSource1.DataSource = typeof(TrainInfo.SearchTrain);
             // 
             // btn_change_dept_arrive
             // 
@@ -189,21 +187,23 @@ namespace TrainInfo
             // btn_search_train
             // 
             this.btn_search_train.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(116)))), ((int)(((byte)(212)))));
+            this.btn_search_train.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_search_train.ForeColor = System.Drawing.Color.White;
             this.btn_search_train.Location = new System.Drawing.Point(442, 58);
             this.btn_search_train.Name = "btn_search_train";
             this.btn_search_train.Size = new System.Drawing.Size(75, 76);
             this.btn_search_train.TabIndex = 4;
-            this.btn_search_train.Text = "조회";
+            this.btn_search_train.Text = "조 회";
             this.btn_search_train.UseVisualStyleBackColor = false;
             this.btn_search_train.Click += new System.EventHandler(this.btn_search_train_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(19, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.Size = new System.Drawing.Size(43, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "출발일";
             // 
@@ -231,16 +231,17 @@ namespace TrainInfo
             this.groupBox2.Controls.Add(this.R_AllTrain);
             this.groupBox2.Location = new System.Drawing.Point(595, 41);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(179, 179);
+            this.groupBox2.Size = new System.Drawing.Size(179, 189);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
             // R_Tonggeun
             // 
             this.R_Tonggeun.AutoSize = true;
+            this.R_Tonggeun.Font = new System.Drawing.Font("나눔바른고딕", 9.75F);
             this.R_Tonggeun.Location = new System.Drawing.Point(24, 155);
             this.R_Tonggeun.Name = "R_Tonggeun";
-            this.R_Tonggeun.Size = new System.Drawing.Size(71, 16);
+            this.R_Tonggeun.Size = new System.Drawing.Size(73, 19);
             this.R_Tonggeun.TabIndex = 5;
             this.R_Tonggeun.Text = "통근열차";
             this.R_Tonggeun.UseVisualStyleBackColor = true;
@@ -249,9 +250,10 @@ namespace TrainInfo
             // R_Mugoonhwa_Nuriro
             // 
             this.R_Mugoonhwa_Nuriro.AutoSize = true;
+            this.R_Mugoonhwa_Nuriro.Font = new System.Drawing.Font("나눔바른고딕", 9.75F);
             this.R_Mugoonhwa_Nuriro.Location = new System.Drawing.Point(24, 129);
             this.R_Mugoonhwa_Nuriro.Name = "R_Mugoonhwa_Nuriro";
-            this.R_Mugoonhwa_Nuriro.Size = new System.Drawing.Size(121, 16);
+            this.R_Mugoonhwa_Nuriro.Size = new System.Drawing.Size(121, 19);
             this.R_Mugoonhwa_Nuriro.TabIndex = 4;
             this.R_Mugoonhwa_Nuriro.Text = "무궁화호 / 누리로";
             this.R_Mugoonhwa_Nuriro.UseVisualStyleBackColor = true;
@@ -260,9 +262,10 @@ namespace TrainInfo
             // R_ITX_Chungchoon
             // 
             this.R_ITX_Chungchoon.AutoSize = true;
+            this.R_ITX_Chungchoon.Font = new System.Drawing.Font("나눔바른고딕", 9.75F);
             this.R_ITX_Chungchoon.Location = new System.Drawing.Point(24, 77);
             this.R_ITX_Chungchoon.Name = "R_ITX_Chungchoon";
-            this.R_ITX_Chungchoon.Size = new System.Drawing.Size(80, 16);
+            this.R_ITX_Chungchoon.Size = new System.Drawing.Size(82, 19);
             this.R_ITX_Chungchoon.TabIndex = 3;
             this.R_ITX_Chungchoon.Text = "ITX - 청춘";
             this.R_ITX_Chungchoon.UseVisualStyleBackColor = true;
@@ -271,9 +274,10 @@ namespace TrainInfo
             // R_SaeMaeul_ITX_SaeMaeul
             // 
             this.R_SaeMaeul_ITX_SaeMaeul.AutoSize = true;
+            this.R_SaeMaeul_ITX_SaeMaeul.Font = new System.Drawing.Font("나눔바른고딕", 9.75F);
             this.R_SaeMaeul_ITX_SaeMaeul.Location = new System.Drawing.Point(24, 103);
             this.R_SaeMaeul_ITX_SaeMaeul.Name = "R_SaeMaeul_ITX_SaeMaeul";
-            this.R_SaeMaeul_ITX_SaeMaeul.Size = new System.Drawing.Size(146, 16);
+            this.R_SaeMaeul_ITX_SaeMaeul.Size = new System.Drawing.Size(148, 19);
             this.R_SaeMaeul_ITX_SaeMaeul.TabIndex = 2;
             this.R_SaeMaeul_ITX_SaeMaeul.Text = "새마을호 / ITX-새마을";
             this.R_SaeMaeul_ITX_SaeMaeul.UseVisualStyleBackColor = true;
@@ -282,9 +286,10 @@ namespace TrainInfo
             // R_KTX_SRT
             // 
             this.R_KTX_SRT.AutoSize = true;
+            this.R_KTX_SRT.Font = new System.Drawing.Font("나눔바른고딕", 9.75F);
             this.R_KTX_SRT.Location = new System.Drawing.Point(24, 51);
             this.R_KTX_SRT.Name = "R_KTX_SRT";
-            this.R_KTX_SRT.Size = new System.Drawing.Size(85, 16);
+            this.R_KTX_SRT.Size = new System.Drawing.Size(85, 19);
             this.R_KTX_SRT.TabIndex = 1;
             this.R_KTX_SRT.Text = "KTX / SRT";
             this.R_KTX_SRT.UseVisualStyleBackColor = true;
@@ -294,9 +299,10 @@ namespace TrainInfo
             // 
             this.R_AllTrain.AutoSize = true;
             this.R_AllTrain.Checked = true;
+            this.R_AllTrain.Font = new System.Drawing.Font("나눔바른고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.R_AllTrain.Location = new System.Drawing.Point(24, 25);
             this.R_AllTrain.Name = "R_AllTrain";
-            this.R_AllTrain.Size = new System.Drawing.Size(47, 16);
+            this.R_AllTrain.Size = new System.Drawing.Size(49, 19);
             this.R_AllTrain.TabIndex = 0;
             this.R_AllTrain.TabStop = true;
             this.R_AllTrain.Text = "전체";
@@ -384,6 +390,10 @@ namespace TrainInfo
             this.durationDataGridViewTextBoxColumn.Name = "durationDataGridViewTextBoxColumn";
             this.durationDataGridViewTextBoxColumn.Width = 110;
             // 
+            // searchTrainBindingSource1
+            // 
+            this.searchTrainBindingSource1.DataSource = typeof(TrainInfo.SearchTrain);
+            // 
             // InfoSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -407,13 +417,13 @@ namespace TrainInfo
             this.Text = "열차 조회";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.getUrlBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchTrainBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

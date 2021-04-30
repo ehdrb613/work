@@ -52,15 +52,15 @@ namespace TrainInfo
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.trainDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.outTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arrplandtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traingradenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrplacenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.arrplandtimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.arrplandtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nodenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trainnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trainDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -77,7 +77,7 @@ namespace TrainInfo
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("나눔고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(160)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -95,7 +95,7 @@ namespace TrainInfo
             this.dataGridView1.DataSource = this.trainDBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(160)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -129,30 +129,30 @@ namespace TrainInfo
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("나눔고딕", 11F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(22, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 19);
+            this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "기차역(도착)";
             // 
             // arrPlaceLabel
             // 
             this.arrPlaceLabel.AutoSize = true;
-            this.arrPlaceLabel.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold);
+            this.arrPlaceLabel.Font = new System.Drawing.Font("나눔고딕", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.arrPlaceLabel.Location = new System.Drawing.Point(683, 18);
             this.arrPlaceLabel.Name = "arrPlaceLabel";
-            this.arrPlaceLabel.Size = new System.Drawing.Size(92, 28);
+            this.arrPlaceLabel.Size = new System.Drawing.Size(73, 20);
             this.arrPlaceLabel.TabIndex = 4;
             this.arrPlaceLabel.Text = "도착정보";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("나눔고딕", 11F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(22, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 19);
+            this.label2.Size = new System.Drawing.Size(88, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "기차역(출발)";
             // 
@@ -200,9 +200,10 @@ namespace TrainInfo
             // radio6
             // 
             this.radio6.AutoSize = true;
-            this.radio6.Location = new System.Drawing.Point(154, 70);
+            this.radio6.Font = new System.Drawing.Font("나눔바른고딕", 11.25F);
+            this.radio6.Location = new System.Drawing.Point(155, 65);
             this.radio6.Name = "radio6";
-            this.radio6.Size = new System.Drawing.Size(71, 16);
+            this.radio6.Size = new System.Drawing.Size(78, 21);
             this.radio6.TabIndex = 9;
             this.radio6.Text = "통근열차";
             this.radio6.UseVisualStyleBackColor = true;
@@ -210,9 +211,10 @@ namespace TrainInfo
             // radio3
             // 
             this.radio3.AutoSize = true;
-            this.radio3.Location = new System.Drawing.Point(22, 45);
+            this.radio3.Font = new System.Drawing.Font("나눔바른고딕", 11.25F);
+            this.radio3.Location = new System.Drawing.Point(23, 40);
             this.radio3.Name = "radio3";
-            this.radio3.Size = new System.Drawing.Size(77, 16);
+            this.radio3.Size = new System.Drawing.Size(87, 21);
             this.radio3.TabIndex = 6;
             this.radio3.Text = "KTX/SRT";
             this.radio3.UseVisualStyleBackColor = true;
@@ -221,9 +223,10 @@ namespace TrainInfo
             // 
             this.radio1.AutoSize = true;
             this.radio1.Checked = true;
-            this.radio1.Location = new System.Drawing.Point(22, 20);
+            this.radio1.Font = new System.Drawing.Font("나눔바른고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.radio1.Location = new System.Drawing.Point(23, 15);
             this.radio1.Name = "radio1";
-            this.radio1.Size = new System.Drawing.Size(47, 16);
+            this.radio1.Size = new System.Drawing.Size(52, 21);
             this.radio1.TabIndex = 4;
             this.radio1.TabStop = true;
             this.radio1.Text = "전체";
@@ -232,9 +235,10 @@ namespace TrainInfo
             // radio5
             // 
             this.radio5.AutoSize = true;
-            this.radio5.Location = new System.Drawing.Point(22, 70);
+            this.radio5.Font = new System.Drawing.Font("나눔바른고딕", 11.25F);
+            this.radio5.Location = new System.Drawing.Point(23, 65);
             this.radio5.Name = "radio5";
-            this.radio5.Size = new System.Drawing.Size(101, 16);
+            this.radio5.Size = new System.Drawing.Size(111, 21);
             this.radio5.TabIndex = 8;
             this.radio5.Text = "무궁화/누리로";
             this.radio5.UseVisualStyleBackColor = true;
@@ -242,9 +246,10 @@ namespace TrainInfo
             // radio4
             // 
             this.radio4.AutoSize = true;
-            this.radio4.Location = new System.Drawing.Point(154, 45);
+            this.radio4.Font = new System.Drawing.Font("나눔바른고딕", 11.25F);
+            this.radio4.Location = new System.Drawing.Point(155, 40);
             this.radio4.Name = "radio4";
-            this.radio4.Size = new System.Drawing.Size(126, 16);
+            this.radio4.Size = new System.Drawing.Size(142, 21);
             this.radio4.TabIndex = 7;
             this.radio4.Text = "새마을/ITX-새마을";
             this.radio4.UseVisualStyleBackColor = true;
@@ -252,9 +257,10 @@ namespace TrainInfo
             // radio2
             // 
             this.radio2.AutoSize = true;
-            this.radio2.Location = new System.Drawing.Point(154, 20);
+            this.radio2.Font = new System.Drawing.Font("나눔바른고딕", 11.25F);
+            this.radio2.Location = new System.Drawing.Point(155, 15);
             this.radio2.Name = "radio2";
-            this.radio2.Size = new System.Drawing.Size(72, 16);
+            this.radio2.Size = new System.Drawing.Size(83, 21);
             this.radio2.TabIndex = 5;
             this.radio2.Text = "ITX-청춘";
             this.radio2.UseVisualStyleBackColor = true;
@@ -281,8 +287,9 @@ namespace TrainInfo
             // 
             // StripLabel
             // 
+            this.StripLabel.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.StripLabel.Name = "StripLabel";
-            this.StripLabel.Size = new System.Drawing.Size(138, 17);
+            this.StripLabel.Size = new System.Drawing.Size(133, 17);
             this.StripLabel.Text = "----년 --월 --일 --:--:--";
             // 
             // timer2
@@ -291,21 +298,25 @@ namespace TrainInfo
             this.timer2.Interval = 6000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // trainDBindingSource
-            // 
-            this.trainDBindingSource.DataSource = typeof(TrainInfo.Data.Train_D);
-            // 
             // outTime
             // 
             this.outTime.DataPropertyName = "outTime";
-            this.outTime.HeaderText = "도착남은시간";
+            this.outTime.HeaderText = "남은시간";
             this.outTime.Name = "outTime";
             this.outTime.ReadOnly = true;
+            // 
+            // arrplandtime
+            // 
+            this.arrplandtime.DataPropertyName = "arrplandtime";
+            this.arrplandtime.HeaderText = "도착 시간";
+            this.arrplandtime.Name = "arrplandtime";
+            this.arrplandtime.ReadOnly = true;
+            this.arrplandtime.Width = 130;
             // 
             // traingradenameDataGridViewTextBoxColumn
             // 
             this.traingradenameDataGridViewTextBoxColumn.DataPropertyName = "traingradename";
-            this.traingradenameDataGridViewTextBoxColumn.HeaderText = "차량종류";
+            this.traingradenameDataGridViewTextBoxColumn.HeaderText = "차량 종류";
             this.traingradenameDataGridViewTextBoxColumn.Name = "traingradenameDataGridViewTextBoxColumn";
             this.traingradenameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -320,7 +331,7 @@ namespace TrainInfo
             // depplandtimeDataGridViewTextBoxColumn
             // 
             this.depplandtimeDataGridViewTextBoxColumn.DataPropertyName = "depplandtime";
-            this.depplandtimeDataGridViewTextBoxColumn.HeaderText = "출발시간";
+            this.depplandtimeDataGridViewTextBoxColumn.HeaderText = "출발 시간";
             this.depplandtimeDataGridViewTextBoxColumn.Name = "depplandtimeDataGridViewTextBoxColumn";
             this.depplandtimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.depplandtimeDataGridViewTextBoxColumn.Width = 130;
@@ -333,27 +344,23 @@ namespace TrainInfo
             this.arrplandtimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.arrplandtimeDataGridViewTextBoxColumn.Width = 80;
             // 
-            // arrplandtime
-            // 
-            this.arrplandtime.DataPropertyName = "arrplandtime";
-            this.arrplandtime.HeaderText = "도착시간";
-            this.arrplandtime.Name = "arrplandtime";
-            this.arrplandtime.ReadOnly = true;
-            this.arrplandtime.Width = 130;
-            // 
             // nodenameDataGridViewTextBoxColumn
             // 
             this.nodenameDataGridViewTextBoxColumn.DataPropertyName = "nodename";
-            this.nodenameDataGridViewTextBoxColumn.HeaderText = "기차역명";
+            this.nodenameDataGridViewTextBoxColumn.HeaderText = "기차 역명";
             this.nodenameDataGridViewTextBoxColumn.Name = "nodenameDataGridViewTextBoxColumn";
             this.nodenameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // trainnoDataGridViewTextBoxColumn
             // 
             this.trainnoDataGridViewTextBoxColumn.DataPropertyName = "trainno";
-            this.trainnoDataGridViewTextBoxColumn.HeaderText = "열차번호";
+            this.trainnoDataGridViewTextBoxColumn.HeaderText = "열차 번호";
             this.trainnoDataGridViewTextBoxColumn.Name = "trainnoDataGridViewTextBoxColumn";
             this.trainnoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // trainDBindingSource
+            // 
+            this.trainDBindingSource.DataSource = typeof(TrainInfo.Data.Train_D);
             // 
             // InfoView_D
             // 
