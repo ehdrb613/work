@@ -423,16 +423,16 @@ namespace TrainInfo
                             TrainInfo.Add(td);
                         }
                         //Console.WriteLine(ShowInfo);
-                        File.WriteAllText(@"./dg_xml/[" + DateTime.Now.ToString("yyyyMMdd") + "]ShowInfo[" + td.depplacename + "][" + td.arrplacename + "].xml", ShowInfo.ToString());
-
+                      
 
                         url = ""; //초기화
                     }
 
                 }
                 Console.WriteLine(TrainInfo[0].depplacename);
+                save(); // xml 정보저장
                 writeLog("출발역:" + TrainInfo[0].depplacename + "_도착역:" + TrainInfo[0].arrplacename);
-                TrainInfo = TrainInfo.OrderBy(x => x.timeCheck).ToList();
+                TrainInfo = TrainInfo.OrderBy(item => item.timeCheck).ToList();
 
                 //확인용
                 foreach (var item in TrainInfo)
@@ -454,6 +454,31 @@ namespace TrainInfo
 
         #endregion api 정보호출
 
+        public static void save()
+        {
+            string xmlOutput = "";
+            xmlOutput += "<items>\n";
+            foreach (var item in TrainInfo)
+            {
+                xmlOutput += "<itme>\n";
+                xmlOutput += $"<traingradename>{item.traingradename}</traingradename>";
+                xmlOutput += $"<depplandtime>{item.depplandtime}</depplandtime>";
+                xmlOutput += $"<arrplandtime>{item.arrplandtime}</arrplandtime>";
+                xmlOutput += $"<depplacename>{item.depplacename}</depplacename>";
+                xmlOutput += $"<arrplacename>{item.arrplacename}</arrplacename>";
+                xmlOutput += $"<trainno>{item.trainno}</trainno>";
+                xmlOutput += $"<nodename>{item.nodename}</nodename>";
+                xmlOutput += $"<outTime>{item.outTime}</outTime>";
+                xmlOutput += "</itme>\n";
+                
+            }
+            xmlOutput += "</items>\n";
+
+            File.WriteAllText(@"./dg_xml/[" + DateTime.Now.ToString("yyyyMMdd") + "]ShowInfo[" + TrainInfo[0].depplacename + "][" + TrainInfo[0].arrplacename + "].xml", xmlOutput);
+
+
+
+        }
 
         public static void createDirectory()
         {
